@@ -34,24 +34,24 @@ class character:
 
     # modifiers
     fortitude = 0
-    fortMagicMod = 0
-    fortMiscMod = 0
+    fort_magic_mod = 0
+    fort_misc_mod = 0
     reflex = 0
-    reflexMagicMod = 0
-    reflexMiscMod = 0
+    reflex_magic_mod = 0
+    reflex_misc_mod = 0
     will = 0
-    willMagicMod = 0
-    willMiscMod = 0
+    will_magic_mod = 0
+    will_misc_mod = 0
 
-    bab = 0
-    spellResist = 0
-    ac = 10
-    acTouch = 0
-    acFlat = 0
+    base_attack_bonus = 0
+    spell_resist = 0
+    armor_class = 10
+    ac_touch = 0
+    ac_flat = 0
     speed = 0
     initiative = 0
     hp = 0
-    armorBonus = 0
+    armor_bonus = 0
     shield_bonus = 0
     dodge_bonus = 0
     size_mod = 0
@@ -62,11 +62,11 @@ class character:
     cmd = 10
     class_skills = None
     skills = None
-    numFeats = 0
+    num_feats = 0
     feats = None
-    Spells = None
+    spells = None
     languages = None
-    isCaster = False
+    is_caster = False
     spell_failure = 0
     char_class = None
     character_level = 1

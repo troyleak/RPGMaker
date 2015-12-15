@@ -3,30 +3,23 @@
 {% if created %}
   <h1>Character has been created</h1>
 {% else %}
+
   <h1>Creating new character</h1>
-  <form action="action_page.py">
-  Name:<br>
-  <input type="text" name="name"></br>
-  <br>
-  <b>Attributes:</b><br></br>
-  Gender:<br>
-  <input type="text" name="gender"></br>
-  Race:<br>
-  <input type="text" name="race"></br>
-  Size:<br>
-  <input type="text" name="size"></br>
-  Age:<br>
-  <input type="text" name="age"></br>
-  Height:<br>
-  <input type="text" name="height"></br>
-  Weight:<br>
-  <input type="text" name="weight"></br>
-  Hair:<br>
-  <input type="text" name="hair"></br>
-  Eyes:<br>
-  <input type="text" name="eyes"></br>
-  Alignment:<br>
-  <input type="text" name="alignment"></br>
-  <!--Need to find some way to make it differentiate based on a value return-->
-]</form>
+
+  <form method="POST" action="/">
+    {% for form in attrib_form %}
+      <li> {{ form.label }} {{ form(size=20) }} </li>
+    {% endfor %}
+    <br></br>
+    {% for form in ability_form %}
+      <li> {{ form.label }} {{ form(size=20) }} </li>
+    {% endfor %}
+    <br></br>
+    {% for form in skills_form %}
+      <li> {{ form.label }} {{ form(size=20) }} </li>
+    {% endfor %}
+
+    <input type="submit" value="Go">
+  </form>
+
 {% endif %}
