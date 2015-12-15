@@ -1,4 +1,5 @@
 <!doctype html>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 <title>Pathfinder Character Sheet Generator</title>
 {% if created %}
   <h1>Character has been created</h1>
@@ -6,20 +7,39 @@
 
   <h1>Creating new character</h1>
 
-  <form method="POST" action="/">
-    {% for form in attrib_form %}
-      <li> {{ form.label }} {{ form(size=20) }} </li>
-    {% endfor %}
-    <br></br>
-    {% for form in ability_form %}
-      <li> {{ form.label }} {{ form(size=20) }} </li>
-    {% endfor %}
-    <br></br>
-    {% for form in skills_form %}
-      <li> {{ form.label }} {{ form(size=20) }} </li>
-    {% endfor %}
+  <body>
+    <div class="form">
+      <form method="POST" action="/">
+        <div class="attributes"> <fieldset>
+          <legend>Attributes: </legend>
+          <ul>
+            {% for field in attrib_form %}
+              <li> {{ field.label }} {{ field(size=20, class=field.short_name) }} </li>
+            {% endfor %}
+          </ul>
+        </fieldset> </div>
+        <br></br>
+        <div class="abilities"> <fieldset>
+          <legend>Abilities: </legend>
+          <ul>
+            {% for field in ability_form %}
+              <li> {{ field.label }} {{ field(size=20, class=field.short_name) }} </li>
+            {% endfor %}
+          </ul>
+        </fieldset>
+        <br></br>
+        <div class="skills"> <fieldset>
+          <legend>Skills: </legend>
+          <ul>
+            {% for field in skills_form %}
+              <li> {{ field.label }} {{ field(size=20, class=field.short_name) }} </li>
+            {% endfor %}
+          </ul>
+        </fieldset>
 
-    <input type="submit" value="Go">
-  </form>
+        <input type="submit" value="Go">
+      </form>
+    </div>
+  </body>
 
 {% endif %}

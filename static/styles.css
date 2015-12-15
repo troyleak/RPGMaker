@@ -1,0 +1,22 @@
+body {
+  background-color: #c2c2ff;
+
+}
+
+h1 {
+  background-color: rgb(214, 176, 255);
+  text-align: center;
+}
+
+.form {
+  text-transform: capitalize;
+}
+
+.attributes {
+}
+
+.abilities {
+}
+
+.skills {
+}
