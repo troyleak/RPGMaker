@@ -1,22 +1,63 @@
 body {
-  background-color: #c2c2ff;
-
-}
-
-h1 {
-  background-color: rgb(214, 176, 255);
-  text-align: center;
-}
-
-.form {
+  background-color: rgba(19, 57, 221, 0.22);
   text-transform: capitalize;
 }
 
+h1 {
+  background-color: rgba(116, 114, 36, 0.2);
+  text-align: center;
+}
+
+span {
+  color: blue;
+}
+
 .attributes {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.attributes span {
+  background-color: rgba(142, 94, 104, 0.2);
 }
 
 .abilities {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.abilities span {
+  background-color: rgba(142, 94, 104, 0.2);
 }
 
 .skills {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.skills span {
+  background-color: rgba(142, 94, 104, 0.2);
+}
+
+
+
+.weapons {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.weapons span {
+  background-color: rgba(142, 94, 104, 0.2);
+}
+
+.armor {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.armor span {
+  background-color: rgba(142, 94, 104, 0.2);
+}
+
+.items {
+  background-color: rgba(154, 80, 116, 0.2);
+}
+
+.items span {
+  background-color: rgba(142, 94, 104, 0.2);
 }

@@ -1,43 +1,44 @@
 from flask_wtf import Form
 from wtforms import validators, StringField
 
-class Skills(Form):
-    acrobatics = StringField(u'Acrobatics', validators=[validators.input_required()])
-    appraise = StringField(u'appraise', validators=[validators.input_required()])
-    bluff = StringField(u'bluff', validators=[validators.input_required()])
-    climb = StringField(u'climb', validators=[validators.input_required()])
-    craft_a = StringField(u'craft_a', validators=[validators.input_required()])
-    craft_b = StringField(u'craft_b', validators=[validators.input_required()])
-    craft_c = StringField(u'craft_c', validators=[validators.input_required()])
-    diplomacy = StringField(u'diplomacy', validators=[validators.input_required()])
-    disable_device = StringField(u'disable_device', validators=[validators.input_required()])
-    disguise = StringField(u'disguise', validators=[validators.input_required()])
-    escape_artist = StringField(u'escape_artist', validators=[validators.input_required()])
-    fly = StringField(u'fly', validators=[validators.input_required()])
-    handle_animal = StringField(u'handle_animal', validators=[validators.input_required()])
-    heal = StringField(u'heal', validators=[validators.input_required()])
-    intimidate = StringField(u'intimidate', validators=[validators.input_required()])
-    knowledge_arcana = StringField(u'knowledge_arcana', validators=[validators.input_required()])
-    knowledge_dungeoneering = StringField(u'knowledge_dungeoneering', validators=[validators.input_required()])
-    knowledge_engineering = StringField(u'knowledge_engineering', validators=[validators.input_required()])
-    knowledge_geography = StringField(u'knowledge_geography', validators=[validators.input_required()])
-    knowledge_history = StringField(u'knowledge_history', validators=[validators.input_required()])
-    knowledge_local = StringField(u'knowledge_local', validators=[validators.input_required()])
-    knowledge_nature = StringField(u'knowledge_nature', validators=[validators.input_required()])
-    knowledge_nobility = StringField(u'knowledge_nobility', validators=[validators.input_required()])
-    knowledge_planes = StringField(u'knowledge_planes', validators=[validators.input_required()])
-    knowledge_religion = StringField(u'knowledge_religion', validators=[validators.input_required()])
-    linguistics = StringField(u'linguistics', validators=[validators.input_required()])
-    perception = StringField(u'perception', validators=[validators.input_required()])
-    perform_a = StringField(u'perform_a', validators=[validators.input_required()])
-    perform_b = StringField(u'perform_b', validators=[validators.input_required()])
-    profession_a = StringField(u'profession_a', validators=[validators.input_required()])
-    profession_b = StringField(u'profession_b', validators=[validators.input_required()])
-    ride = StringField(u'ride', validators=[validators.input_required()])
-    sense_motive = StringField(u'sense_motive', validators=[validators.input_required()])
-    sleight_of_hand = StringField(u'sleight_of_hand', validators=[validators.input_required()])
-    spellcraft = StringField(u'spellcraft', validators=[validators.input_required()])
-    stealth = StringField(u'stealth', validators=[validators.input_required()])
-    survival = StringField(u'survival', validators=[validators.input_required()])
-    swim = StringField(u'swim', validators=[validators.input_required()])
-    use_magic_device = StringField(u'use_magic_device', validators=[validators.input_required()])
+class Skills:
+    def __init__(self, master):
+        skills =  { 'acrobatics' : 0,
+                    'appraise' : 0,
+                    'bluff' : 0,
+                    'climb' : 0,
+                    'craft_a' : 0,
+                    'craft_b' : 0,
+                    'craft_c' : 0,
+                    'diplomacy' : 0,
+                    'disable_device' : 0,
+                    'disguise' : 0,
+                    'escape_artist' : 0,
+                    'fly' : 0,
+                    'handle_animal' : 0,
+                    'heal' : 0,
+                    'intimidate' : 0,
+                    'knowledge_arcana' : 0,
+                    'knowledge_dungeoneering' : 0,
+                    'knowledge_engineering' : 0,
+                    'knowledge_geography' : 0,
+                    'knowledge_history' : 0,
+                    'knowledge_local' : 0,
+                    'knowledge_nature' : 0,
+                    'knowledge_nobility' : 0,
+                    'knowledge_planes' : 0,
+                    'knowledge_religion' : 0,
+                    'linguistics' : 0,
+                    'perception' : 0,
+                    'perform_a' : 0,
+                    'perform_b' : 0,
+                    'profession_a' : 0,
+                    'profession_b' : 0,
+                    'ride' : 0,
+                    'sense_motive' : 0,
+                    'sleight_of_hand' : 0,
+                    'spellcraft' : 0,
+                    'stealth' : 0,
+                    'survival' : 0,
+                    'swim' : 0,
+                    'use_magic_device' : 0 }

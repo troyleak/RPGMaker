@@ -1,23 +1,43 @@
-class char_class(character):
-    def barbarian(player):
-        # dostuff
-    def bard(player):
-        # dostuff
-    def cleric(player):
-        # dostuff
-    def druid(player):
-        # dostuff
-    def fighter(player):
-        # dostuff
-    def monk(player):
-        # dostuff
-    def paladin(player):
-        # dostuff
-    def ranger(player):
-        # dostuff
-    def rogue(player):
-        # dostuff
-    def sorcerer(player):
-        # dostuff
-    def wizard(player):
-        # dostuff
+class Barbarian():
+    # dostuff
+    def make_barbarian(character):
+
+class Bard():
+    # dostuff
+    def make_bard(character):
+
+class Cleric():
+    # dostuff
+    def make_cleric(character):
+
+class Druid():
+    # dostuff
+    def make_druid(character):
+
+class Fighter():
+    # dostuff
+    def make_fighter(character):
+
+class Monk():
+    # dostuff
+    def make_monk(character):
+
+class Paladin():
+    # dostuff
+    def make_paladin(character):
+
+class Ranger():
+    # dostuff
+    def make_ranger(character):
+
+class Rogue():
+    # dostuff
+    def make_rogue(character):
+
+class Sorcerer():
+    # dostuff
+    def make_sorcerer(character):
+
+class Wizard():
+    # dostuff
+    def make_wizard(character):
