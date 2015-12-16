@@ -27,6 +27,11 @@ def form():
     weapons_form = WTF_Weapon()
     armor_form = WTF_Armor()
 
+    if (attrib_form.validate_on_submit()
+        and ability_form.validate_on_submit()
+        and skills_form.validate_on_submit() ):
+        return redirect('/submit')
+
 
     return render_template('pathfinder.html',
                             attrib_form=attrib_form,
@@ -38,11 +43,7 @@ def form():
 
 @app.route("/submit", methods=('GET', 'POST'))
 def submit():
-    if (attrib_form.validate_on_submit()
-        and ability_form.validate_on_submit()
-        and skills_form.validate_on_submit() ):
-        return redirect('/submit')
-    return render_template('submit.html', attribs=attribs, abilities=abilities, skills=skills)
+    return render_template('submit.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

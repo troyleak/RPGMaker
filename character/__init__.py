@@ -17,9 +17,14 @@ Call create method on Character object to populate with values
 import random
 from collections import namedtuple
 
-from skills import *
+from . import classes
+from . import items
+from . import race
+from . import skills
+from . import spells
 
-class Character(Skills): # TODO: Add feats
+
+class Character(): # TODO: Add feats
 
     def __init__(self, master):
 
@@ -55,6 +60,7 @@ class Character(Skills): # TODO: Add feats
         self.will_magic_mod = 0
         self.will_misc_mod = 0
 
+        # misc modifiers
         self.base_attack_bonus = 0
         self.spell_resist = 0
         self.armor_class = 10
