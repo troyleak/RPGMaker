@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/local/bin/python3
 
 from flask import Flask, render_template, request
 
@@ -27,11 +27,18 @@ def form():
     weapons_form = WTF_Weapon()
     armor_form = WTF_Armor()
 
+    print(attrib_form.errors)
+
     if (attrib_form.validate_on_submit()
         and ability_form.validate_on_submit()
-        and skills_form.validate_on_submit() ):
-        return redirect('/submit')
+        and skills_form.validate_on_submit()
+        and items_form.validate_on_submit()
+        and weapons_form.validate_on_submit()
+        and armor_form.validate_on_submit() ):
+        return redirect('/submit', created=True)
+        # submit will return a different view if checks pass
 
+    print(attrib_form.errors)
 
     return render_template('pathfinder.html',
                             attrib_form=attrib_form,

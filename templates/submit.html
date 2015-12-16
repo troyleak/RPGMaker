@@ -4,15 +4,23 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 <title>Pathfinder Character Sheet Generator</title>
 {% if created %}
-  <h1>Character has been created</h1>
-</head>
-{% else %}
 
-  <h1>Character: </h1>
+  <h1>Status: </h1>
 </head>
 
 <body>
-  <p>Hello World</p>
+  <p>It works</p>
+</body>
+
+</head>
+
+{% else %}
+
+  <h1>Status: </h1>
+</head>
+
+<body>
+  <p>Not quite</p>
 </body>
 
 {% endif %}

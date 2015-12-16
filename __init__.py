@@ -1,0 +1,1 @@
+from RPGMaker import RPGMaker
