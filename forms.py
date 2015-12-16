@@ -37,6 +37,7 @@ class WTF_Abilities(Form):
 
 
 class WTF_Skills(Form):
+
     acrobatics = intf(u'acrobatics', validators=[validators.Required(), validators.NumberRange(0, 0)])
     appraise = intf(u'appraise', validators=[validators.Required(), validators.NumberRange(0, 0)])
     bluff = intf(u'bluff', validators=[validators.Required(), validators.NumberRange(0, 0)])
@@ -80,6 +81,7 @@ class WTF_Skills(Form):
 
 
 class WTF_Weapon(Form):
+
     name = strf(u'name', validators=[validators.Required()])
     attack_bonus = intf(u'attack bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
     critical = intf(u'critical', validators=[validators.Required(), validators.NumberRange(0, 0)])
@@ -91,6 +93,7 @@ class WTF_Weapon(Form):
 
 
 class WTF_Armor(Form):
+
     name = strf(u'name', validators=[validators.Required()])
     bonus = intf(u'bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
     armor_type = strf(u'armor type', validators=[validators.Required(), validators.NumberRange(0, 0)])
@@ -102,5 +105,6 @@ class WTF_Armor(Form):
 
 
 class WTF_Item(Form):
+
     item = strf(u'item', validators=[validators.Required()])
     weight = intf(u'weight', validators=[validators.Required(), validators.NumberRange(0, 0)])

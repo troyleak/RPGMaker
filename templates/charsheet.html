@@ -1,0 +1,102 @@
+{% block doc %}
+<doc>
+{% block head %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- block styles %}
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+{%- endblock styles %}
+
+{% block title %} Pathfinder Character Sheet Generator {% endblock title %}
+</head>
+{% endblock head %}
+
+{% block navbar %}
+<div class="navbar navbar-fixed-top">
+  <!-- ... -->
+</div>
+{% endblock navbar %}
+
+{% block body %}
+<body>
+  {% block content %}
+  <form method="POST" action="/submit">
+    <fieldset> <div class="attributes">
+      <legend>Attributes: </legend>
+      <ul>
+        {% for item in attrib_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset> </div>
+    <br></br>
+    <fieldset> <div class="abilities">
+      <legend>Abilities: </legend>
+      <ul>
+        {% for item in ability_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset>
+    <br></br>
+    <fieldset> <div class="skills">
+      <legend>Skills: </legend>
+      <ul>
+        {% for item in skills_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset>
+    <br></br>
+    <fieldset> <div class="weapons">
+      <legend>Weapons: </legend>
+      <ul>
+        {% for item in weapons_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset>
+    <br></br>
+    <fieldset> <div class="armor">
+      <legend>Armor: </legend>
+      <ul>
+        {% for item in armor_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset>
+    <br></br>
+    <fieldset> <div class="items">
+      <legend>Items: </legend>
+      <ul>
+        {% for item in items_form %}
+        <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">{{ item.label }}</span>
+          <input type="text" class="form-control" placeholder="label" aria-describedby="basic-addon1">
+        </div>
+        {% endfor %}
+      </ul>
+    </fieldset>
+    <input type="submit" value="Go">
+  </form>
+  {% endblock content %}
+</body>
+{% endblock body %}
+</doc>
+{% endblock doc %}
