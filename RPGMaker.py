@@ -17,8 +17,8 @@ def entry():
 
 @app.route("/form")
 def form():
-    skills = Skills(app)
-    player = Character(skills) # create new character object to pass around and build
+    char_skills = Skills(app)
+    player = Character(app) # create new character object to pass around and build
 
     attrib_form = WTF_Attributes()
     ability_form = WTF_Abilities()

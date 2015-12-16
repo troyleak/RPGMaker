@@ -1,4 +1,4 @@
-class Skills:
+class Skills():
     def __init__(self, master):
         skills =  { 'acrobatics' : 0,
                     'appraise' : 0,

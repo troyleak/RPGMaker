@@ -17,11 +17,11 @@ Call create method on Character object to populate with values
 import random
 from collections import namedtuple
 
-from . import classes
-from . import items
-from . import race
-from . import skills
-from . import spells
+from classes import *
+from items import *
+from race import *
+from skills import *
+from spells import *
 
 
 class Character(): # TODO: Add feats
