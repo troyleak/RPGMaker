@@ -1,23 +1,39 @@
 {% extends "bootstrap/base.html" %}
-{% import "macros.html" as macros %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Create a Character{% endblock %}
 
 {% block navbar %}
-<div>
-  <form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Pathfinder RPG Character Generator
+      </a>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
-{% endblock %}
+    <button type="reset" class="btn btn-default pull-right" href="charsheet.html">Reset</button>
+  </div>
+</nav>
+{% endblock navbar %}
 
 {% block content %}
-  <h1>Hello, Bootstrap</h1>
-  <div>
-    {{ wtf.quick_form(form) }}
+<div class="panel panel-default">
+  <div class="panel-body">
+      <div class="form-group">
+        <form>
+          {{ wtf.quick_form(form,
+                            action="/submit",
+                            method="POST",
+                            extra_classes='None',
+                            role="form",
+                            form_type="basic",
+                            horizontal_columns=('lg', 2, 10),
+                            enctype=None,
+                            button_map={'submit': 'submit'},
+                            id="") }}
+        </form>
+      </div>
   </div>
-{% endblock %}
+  <div class="panel-footer"></div>
+</div>
+{% endblock content %}

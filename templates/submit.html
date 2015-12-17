@@ -1,26 +1,27 @@
-<!doctype html>
-<html>
-<head>
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-<title>Pathfinder Character Sheet Generator</title>
-{% if created %}
+{% extends "bootstrap/base.html" %}
 
-  <h1>Status: </h1>
-</head>
+{% block title %}Submitted{% endblock %}
 
-<body>
-  <p>It works</p>
-</body>
+{% block navbar %}
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Pathfinder RPG Character Generator
+      </a>
+    </div>
+    <button type="reset" class="btn btn-default pull-right" href="charsheet.html">Reset</button>
+  </div>
+</nav>
+{% endblock navbar %}
 
-</head>
-
-{% else %}
-
-  <h1>Status: </h1>
-</head>
-
-<body>
-  <p>Not quite</p>
-</body>
-
-{% endif %}
+{% block content %}
+  <h1>Submitted</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-3 col-sm-4 col-sm-offset-4 col-md-offset-4 col-lg-3 col-lg-offset-4">
+      <div class="login-message">
+        <button type="form" class="btn btn-default">Click Here</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

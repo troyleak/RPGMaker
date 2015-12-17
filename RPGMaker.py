@@ -1,6 +1,6 @@
 #! /usr/local/bin/python3
 
-from flask import Flask, render_template
+from flask import Flask, render_template, flash
 from flask_bootstrap import Bootstrap
 
 import secrets
@@ -26,14 +26,16 @@ def create_app(configfile=None):
         form = WTF_Charsheet()
 
         if (form.validate_on_submit()):
-            return redirect('/submit', created=True)
+            return redirect(url_for(submit), created=True)
             # submit will return a different view if checks pass
+        else:
+            flash("Error validating form, try again")
 
         return render_template('charsheet.html', form=form)
 
     @app.route("/submit", methods=('GET', 'POST'))
     def submit():
-        return render_template('submit.html')
+        return render_template('submit.html', created=created)
 
 
     return app
