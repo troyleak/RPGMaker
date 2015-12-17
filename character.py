@@ -26,7 +26,7 @@ from spells import *
 
 class Character(): # TODO: Add feats
 
-    def __init__(self, master):
+    def __init__(self):
 
         # abilities
         Ability = namedtuple('Ability', ['stat', 'mod'])
@@ -79,7 +79,7 @@ class Character(): # TODO: Add feats
         self.combat_maneuver_bonus = 0
         self.combat_maneuver_defense = 10
         self.class_skills = None
-        self.skills = Skills(master)
+        self.skills = Skills(self)
         self.num_feats = 0
         self.feats = None
         self.spells = None

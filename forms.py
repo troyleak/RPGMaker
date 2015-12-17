@@ -2,9 +2,8 @@ from flask_wtf import Form
 from wtforms import validators
 from wtforms import StringField as strf, IntegerField as intf, FormField, SubmitField
 
-# TODO: Validate input
+# TODO: Finish validate input
 #       Plug frontend into backend
-#       switch from vanilla CSS to Bootstrap
 
 class WTF_Attributes(Form):
     name = strf(u'Name', validators=[validators.Required()])
@@ -81,32 +80,32 @@ class WTF_Skills(Form):
 
 class WTF_Weapon(Form):
 
-    name = strf(u'name', validators=[validators.Required()])
-    attack_bonus = intf(u'attack bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    critical = intf(u'critical', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    dmg_type = intf(u'damage type', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    wpn_range = intf(u'weapon range', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    ammunition = intf(u'ammunition', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    damage = strf(u'damage', validators=[validators.Required()])
+    name = strf(u'Name', validators=[validators.Required()])
+    attack_bonus = intf(u'Attack Bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    critical = intf(u'Critical', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    dmg_type = intf(u'Damage Type', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    wpn_range = intf(u'Weapon Range', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    ammunition = intf(u'Ammunition', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    damage = strf(u'Damage', validators=[validators.Required()])
 
 
 
 class WTF_Armor(Form):
 
-    name = strf(u'name', validators=[validators.Required()])
-    bonus = intf(u'bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    armor_type = strf(u'armor type', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    check_penalty = intf(u'check penalty', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    spell_failure = intf(u'spell failure', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    weight = intf(u'weight', validators=[validators.Required(), validators.NumberRange(0, 0)])
-    properties = strf(u'properties', validators=[validators.Required()])
+    name = strf(u'Name', validators=[validators.Required()])
+    bonus = intf(u'Bonus', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    armor_type = strf(u'Armor Type', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    check_penalty = intf(u'Check Penalty', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    spell_failure = intf(u'Spell Failure', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    weight = intf(u'Weight', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    properties = strf(u'Properties', validators=[validators.Required()])
 
 
 
 class WTF_Item(Form):
 
-    item = strf(u'item', validators=[validators.Required()])
-    weight = intf(u'weight', validators=[validators.Required(), validators.NumberRange(0, 0)])
+    item = strf(u'Item', validators=[validators.Required()])
+    weight = intf(u'Weight', validators=[validators.Required(), validators.NumberRange(0, 0)])
 
 
 class WTF_Charsheet(Form):

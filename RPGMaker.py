@@ -30,44 +30,55 @@ Main program:
 
             Error catching - can be done in the individual classes
 
-            Fix frontend glitches - (low priority)
+            Fix frontend glitches - Want form data accepted and displayed
 
 '''
 
-from flask import Flask, render_template, flash
+from flask import Flask, render_template, flash, redirect, url_for
 from flask_bootstrap import Bootstrap
 
-import secrets
-
 from character import *
-from forms import *
+from forms_test import *
 
 def create_app(configfile=None):
+    
     app = Flask(__name__)
+    app.config.from_object('secrets')
     Bootstrap(app)
-    app.secret_key = secrets.SECRET_KEY
+
+    created = False
+    character = Character()
 
     @app.route("/")
     def entry():
         return render_template("index.html")
 
 
-    @app.route("/form")
+    @app.route("/form", methods=('GET', 'POST'))
     def form():
-        char_skills = Skills(app)
-        player = Character(app) # create new character object to pass around and build
 
         form = WTF_Charsheet()
 
-        if (form.validate_on_submit()):
-            return redirect(url_for(submit), created=True)
+        if ( form.validate_on_submit() ):
+            # form validation
+            flash('Form validated')
+
+            for element in form:
+                # Adds each element to its corresponding value in the character object
+                character.element = element.data.value
+                print(element)
+
+            return redirect(url_for('submit'), form=form, created=True, character=character)
+
+        else:
+            flash('Creating new Character')
 
         return render_template('charsheet.html', form=form)
 
+
     @app.route("/submit", methods=('GET', 'POST'))
     def submit():
-        return render_template('submit.html', created=created)
-
+        return render_template('submit.html', form=form, created=created, character=character)
 
     return app
 
