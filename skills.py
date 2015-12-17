@@ -1,6 +1,6 @@
 class Skills():
     def __init__(self, master):
-        skills =  { 'acrobatics' : 0,
+        self.skills =  { 'acrobatics' : 0,
                     'appraise' : 0,
                     'bluff' : 0,
                     'climb' : 0,
@@ -39,3 +39,20 @@ class Skills():
                     'survival' : 0,
                     'swim' : 0,
                     'use_magic_device' : 0 }
+
+    def set_skill(self, skill, points):
+        # Takes the skill and the value as arguments.
+        # Updates the value, not adding to it
+        # If it can't find the skill displays a warning message
+        if skill in self.skills:
+            self.skills[skill] = points
+            print("Updated skill" + skill + " with the value")
+        else:
+            print("Error updating skill value")
+        print("test skills.Skills.update()")
+
+    def get_skill(self, skill):
+        if skill in self.skills:
+            return skill
+        else:
+            print("Unable to update " + skill + " skill")

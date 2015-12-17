@@ -68,7 +68,7 @@ class Character(): # TODO: Add feats
         self.ac_flat = 0
         self.speed = 0
         self.initiative = 0
-        self.hp = 0
+        self.hit_points = 0
         self.armor_bonus = 0
         self.shield_bonus = 0
         self.dodge_bonus = 0
@@ -76,10 +76,10 @@ class Character(): # TODO: Add feats
         self.natural_armor = 0
         self.deflection_mod = 0
         self.misc_armor_mod = 0
-        self.cmb = 0
-        self.cmd = 10
+        self.combat_maneuver_bonus = 0
+        self.combat_maneuver_defense = 10
         self.class_skills = None
-        self.skills = None
+        self.skills = Skills(master)
         self.num_feats = 0
         self.feats = None
         self.spells = None

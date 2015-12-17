@@ -1,6 +1,6 @@
 #! /usr/local/bin/python3
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 
 import secrets
@@ -10,7 +10,7 @@ from forms import *
 
 def create_app(configfile=None):
     app = Flask(__name__)
-    # app = Bootstrap(app)
+    Bootstrap(app)
     app.secret_key = secrets.SECRET_KEY
 
     @app.route("/")
@@ -30,8 +30,6 @@ def create_app(configfile=None):
         weapons_form = WTF_Weapon()
         armor_form = WTF_Armor()
 
-        print(attrib_form.errors)
-
         if (attrib_form.validate_on_submit()
             and ability_form.validate_on_submit()
             and skills_form.validate_on_submit()
@@ -40,8 +38,6 @@ def create_app(configfile=None):
             and armor_form.validate_on_submit() ):
             return redirect('/submit', created=True)
             # submit will return a different view if checks pass
-
-        print(attrib_form.errors)
 
         return render_template('charsheet.html',
                                 attrib_form=attrib_form,
