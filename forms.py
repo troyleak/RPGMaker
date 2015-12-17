@@ -2,6 +2,7 @@ from flask_wtf import Form
 from wtforms import validators
 from wtforms import StringField as strf
 from wtforms import IntegerField as intf
+from wtforms import FormField
 
 # TODO: Validate input
 #       Plug frontend into backend
@@ -108,3 +109,12 @@ class WTF_Item(Form):
 
     item = strf(u'item', validators=[validators.Required()])
     weight = intf(u'weight', validators=[validators.Required(), validators.NumberRange(0, 0)])
+
+
+class WTF_Charsheet(Form):
+    attributes = FormField(WTF_Attributes)
+    abilities = FormField(WTF_Abilities)
+    skills = FormField(WTF_Skills)
+    weapon = FormField(WTF_Weapon)
+    armor = FormField(WTF_Armor)
+    item = FormField(WTF_Item)

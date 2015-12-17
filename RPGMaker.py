@@ -23,29 +23,13 @@ def create_app(configfile=None):
         char_skills = Skills(app)
         player = Character(app) # create new character object to pass around and build
 
-        attrib_form = WTF_Attributes()
-        ability_form = WTF_Abilities()
-        skills_form = WTF_Skills()
-        items_form = WTF_Item()
-        weapons_form = WTF_Weapon()
-        armor_form = WTF_Armor()
+        form = WTF_Charsheet()
 
-        if (attrib_form.validate_on_submit()
-            and ability_form.validate_on_submit()
-            and skills_form.validate_on_submit()
-            and items_form.validate_on_submit()
-            and weapons_form.validate_on_submit()
-            and armor_form.validate_on_submit() ):
+        if (form.validate_on_submit()):
             return redirect('/submit', created=True)
             # submit will return a different view if checks pass
 
-        return render_template('charsheet.html',
-                                attrib_form=attrib_form,
-                                ability_form=ability_form,
-                                skills_form=skills_form,
-                                items_form=items_form,
-                                weapons_form=weapons_form,
-                                armor_form=armor_form)
+        return render_template('charsheet.html', form=form)
 
     @app.route("/submit", methods=('GET', 'POST'))
     def submit():
