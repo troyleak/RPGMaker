@@ -1,13 +1,3 @@
-# RPG Character Generator
-# Create a database filled with different character classes, stats that fall
-# within each class’ restrictions (wizards could always have low strength but
-# high magic for example), and maybe even a description generator populated
-# with premade sentences pertaining to personality, skill, and history. For an
-# interface, allow the user to select what kind of class or character they’d
-# like, and a ROLL or GENERATE button that will fill in the rest.
-#
-# Bonus points: provide a print button that will produce a
-# printer-friendly version of the character sheet.
 
 '''
 Default constructor creates random/empty values.
