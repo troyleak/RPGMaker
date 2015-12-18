@@ -1,7 +1,0 @@
-{% for i in char.attributes.__dict__ %}
-  <li class="list-group-item">{{ i }}<span class="badge">{{ char.attributes.__dict__[i] }}</span></li>
-{% endfor %}
-
-{% for i in char.skills__dict__ %}
-  <li class="list-group-item">{{ i }}<span class="badge">{{ char.skills.__dict__[i] }}</span></li>
-{% endfor %}

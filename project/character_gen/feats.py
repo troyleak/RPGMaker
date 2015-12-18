@@ -4,13 +4,17 @@
 #   - Add generic Feats
 #   - Implement a modifier for character object to add feats and change stats
 
-def dwarf():
-    traits =  {"Slow and Steady":"",
-                    "Darkvision":"",
-                    "Defensive Training":"",
-                    "Greed":"",
-                    "Hatred":"",
-                    "Hardy":"",
-                    "Stability":"",
-                    "Stonecunning":"",
-                    "Weapon Familiarity":"" }
+class Feats():
+    def __init__():
+        feats_list = []
+
+    def dwarf():
+        traits =  {"Slow and Steady":"",
+                        "Darkvision":"",
+                        "Defensive Training":"",
+                        "Greed":"",
+                        "Hatred":"",
+                        "Hardy":"",
+                        "Stability":"",
+                        "Stonecunning":"",
+                        "Weapon Familiarity":"" }

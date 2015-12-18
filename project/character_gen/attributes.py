@@ -13,7 +13,6 @@ set_attrib takes an attribute and a value and sets the attribute appropriately,
 class Attributes():
     def __init__(self):
         self.options = {'gender':['male', 'female'],
-                        'race':['dwarf', 'halfling', 'elf', 'human', 'gnome', 'half-orc', 'half-elf'],
                         'size':['large', 'medium', 'small'],
                         'age':list(xrange(18, 400)),
                         'height':list(xrange(100, 200)),
@@ -22,9 +21,8 @@ class Attributes():
                         'eyes':['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'black', 'white'],
                         'alignment':{ 'primary':['chaotic', 'neutral', 'lawful'], 'secondary':['evil', 'neutral', 'good']}
                         }
+
         self.gender = 'none'
-        self.race = 'none'
-        # More sizes can be implemented later, but for now this is all the players will need
         self.size = 'none'
         self.age = 0
         self.height = 0

@@ -9,10 +9,12 @@
       <div class="form-group">
         <form action="/submit" method="POST" enctype="multipart/form-data">
           {{ form.hidden_tag() }}
-          {{ wtf.form_errors(form, hiddens="only") }}
+          {{ wtf.form_errors(form, hiddens="True") }}
 
           {% for field in form if field.widget.input_type != 'hidden' %}
-            {{ wtf.form_field(field, button_map={'submit':'primary'}) }}
+            {{ wtf.form_field(field, form_type="horizontal", button_map={'submit':'primary'}) }}
+            {{ wtf.form_errors(field, hiddens="True") }}
+
           {% endfor %}
         </form>
       </div>

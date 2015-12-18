@@ -43,50 +43,44 @@ from character_gen import *
 
 from forms import *
 
-def create_app(configfile=None):
 
-    app = Flask(__name__)
-    app.config.from_object('secrets')
-    Bootstrap(app)
+app = Flask(__name__)
+app.config.from_object('secrets')
+Bootstrap(app)
 
-    created = False
-    char = character.Character
+created = False
+char = character.Character
+abilities = ability_scores.Abilities
+attributes = attributes.Attributes
+race = race.Race
+char_class = classes.Char_Class
+skills = skills.Skills
+feats = feats.Feats
+gear = gear.Gear
+spells = spells.Spells
 
-    @app.route("/")
-    def entry():
-        return render_template("index.html")
+char.create_char(char, abilities, attributes, race, char_class, skills, feats, gear, spells)
 
-
-    @app.route("/form", methods=('GET', 'POST'))
-    def form():
-
-        form = forms_test.WTF_Charsheet()
-        # char.attributes = attributes.Attributes
-        # char.ability_scores = ability_scores.Abilities
-        # char.skills = skills.Skills
-
-        if ( form.validate_on_submit() ):
-            # form validation
-            flash('Form validated')
-
-            # for element in form:
-            #     # Adds each element to its corresponding value in the character object
-            #     char.element = element.data.value
-
-            return redirect(url_for('submit'), form=form, created=True, char=char)
-
-        else:
-            flash('Creating new Character')
-
-        return render_template('charsheet.html', form=form)
+@app.route("/")
+def entry():
+    return render_template("index.html")
 
 
-    @app.route("/submit", methods=('GET', 'POST'))
-    def submit():
-        return render_template('submit.html', form=form, created=created, char=char)
+@app.route("/form", methods=('GET', 'POST'))
+def form():
+    form = forms_test.WTF_Charsheet()
 
-    return app
+    if ( form.validate_on_submit() ):
+        return redirect(url_for('submit'), form=form, created=True, char=char)
+
+    return render_template('charsheet.html', form=form)
+
+
+@app.route("/submit", methods=('GET', 'POST'))
+def submit():
+    return render_template('submit.html', form=form, created=created, char=char)
+
 
 
 if __name__ == "__main__":
-    create_app().run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')

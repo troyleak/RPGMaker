@@ -14,6 +14,11 @@ def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
 
     print("Ability Stats updated")
 
+    # def random():
+    #     options = {'race':['dwarf', 'halfling', 'elf', 'human', 'gnome', 'half-orc', 'half-elf']}
+    #
+    #     self.race = 'none'
+
 
 class Dwarf():
     def __init__(self, master):
@@ -108,3 +113,7 @@ class Human():
         print("test")
     # dostuff
     # humans gain one more skill rank per level
+
+class Race():
+    def __init__(self):
+        print("test")

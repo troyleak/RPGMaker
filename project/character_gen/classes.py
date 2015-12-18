@@ -123,3 +123,7 @@ class Wizard():
     def make(character):
         character.class_skills = self.class_skill_list
         print("test")
+
+class Char_Class():
+    def __init__(self):
+        print("test")

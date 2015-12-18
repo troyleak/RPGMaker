@@ -1,7 +1,8 @@
 
 '''
-Default constructor creates random/empty values.
-Call create method on Character object to populate with values
+Default constructor creates empty values.
+Call set_attribs_rand method on Character object to populate with random values
+Call set_attrib to change an individual parameter
 '''
 
 class Character(): # TODO: Add feats
@@ -11,6 +12,11 @@ class Character(): # TODO: Add feats
         self.ability_scores = None
         self.attributes = None
         self.skills = None
+        self.feats = None
+        self.spells = None
+        self.char_class = None
+        self.gear = None
+        self.race = None
 
         # Saving throws and modifiers
         self.fortitude = 0
@@ -43,19 +49,26 @@ class Character(): # TODO: Add feats
         self.combat_maneuver_defense = 10
         self.class_skills = None
         self.num_feats = 0
-        self.feats = None
-        self.spells = None
         self.languages = None
         self.is_caster = False
         self.spell_failure = 0
-        self.char_class = None
         self.character_level = 1
         self.favored_hp = True
         self.build = 'Random'
 
-        self.items = []
         self.money = 0
         self.experience = 0
+
+    def create_char(character_, ability_scores_, attributes_, char_class_, feats_, gear_, race_, skills_, spells_):
+        character_.ability_scores = ability_scores_
+        character_.attributes = attributes_
+        character_.skills = skills_
+        character_.feats = feats_
+        character_.spells = spells_
+        character_.char_class = char_class_
+        character_.gear = gear_
+        character_.race = race_
+
 
     def set_attrib(self, attrib, value):
     # takes an attribute and a value and sets the value to the passed val
@@ -63,10 +76,11 @@ class Character(): # TODO: Add feats
     # options for that attribute before modifying the value
     # TODO: Move to try/except
 
-        if attrib in self.__dict__ and value in self.options[attrib]:
-            self.__dict__[attrib] = value
-        else:
-            print("Error modifying that attribute. Perhaps it doesn't exist?")
+        try:
+            if attrib in self.__dict__ and value in self.options[attrib]:
+                self.__dict__[attrib] = value
+        except ValueError:
+            print("ERROR - " + attrib + " is not a valid attribute or " + value + " is not a valid option")
         print("test")
 
 

@@ -67,23 +67,23 @@ class Armor():
         print("Initialized Armor")
 
 
-class Gear():
+class Item():
 
     def __init__(self, master):
-        self.gear = {'name':"" ,
+        self.item = {'name':"" ,
                      'weight':0,
                      'properties':"" }
-        print("Created uninitialized Gear item")
+        print("Created uninitialized item")
 
     def make(self, name, weight, properties):
         self.name = name
         self.weight = weight
         self.properties = properties
-        print("Initialized Gear")
+        print("Initialized Item")
 
 
-class Items():
-
+class Gear():
+    # gear is a container for the other itemtypes
     def __init__(self, master):
         self.weapons = []
         self.armor = []
@@ -97,5 +97,5 @@ class Items():
         self.armor += armor
 
 
-    def add_gear(self, gear):
-        self.gear += gear
+    def add_item(self, item):
+        self.item += item
