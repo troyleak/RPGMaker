@@ -61,17 +61,17 @@ def create_app(configfile=None):
     def form():
 
         form = forms_test.WTF_Charsheet()
-        char.attributes = attributes.Attributes
-        char.ability_scores = ability_scores.Abilities
-        char.skills = skills.Skills
+        # char.attributes = attributes.Attributes
+        # char.ability_scores = ability_scores.Abilities
+        # char.skills = skills.Skills
 
         if ( form.validate_on_submit() ):
             # form validation
             flash('Form validated')
 
-            for element in form:
-                # Adds each element to its corresponding value in the character object
-                char.element = element.data.value
+            # for element in form:
+            #     # Adds each element to its corresponding value in the character object
+            #     char.element = element.data.value
 
             return redirect(url_for('submit'), form=form, created=True, char=char)
 
@@ -89,4 +89,4 @@ def create_app(configfile=None):
 
 
 if __name__ == "__main__":
-    create_app().run(debug=True)
+    create_app().run(debug=True, host='0.0.0.0')
