@@ -6,21 +6,26 @@ Contains data structures pertaining to character's physical attributes
 class Attributes()
     contains a dict with the available options for each attribute
 
-set_attrib takes an attribute and a value and sets the attribute appropriately,
-    if the desired attribute and option exist.
+set_attrib takes an attribute and a value and modifies the character
+    appropriately, if the desired attribute and option exist.
 '''
 
 class Attributes():
     def __init__(self):
-        self.options = {'gender':['male', 'female'],
-                        'size':['large', 'medium', 'small'],
-                        'age':list(xrange(18, 400)),
-                        'height':list(xrange(100, 200)),
-                        'weight':list(xrange(150, 300)),
-                        'hair':['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'black', 'white'],
-                        'eyes':['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet', 'black', 'white'],
-                        'alignment':{ 'primary':['chaotic', 'neutral', 'lawful'], 'secondary':['evil', 'neutral', 'good']}
-                        }
+        self.options = {
+            'gender' : ['male', 'female'],
+            'size' : ['large', 'medium', 'small'],
+            'age' : list(xrange(18, 400)),
+            'height' : list(xrange(100, 200)),
+            'weight' : list(xrange(150, 300)),
+            'hair' : ['red', 'orange', 'yellow', 'green', 'blue',
+                      'indigo', 'violet', 'black', 'white'],
+            'eyes' : ['red', 'orange', 'yellow', 'green', 'blue',
+                      'indigo', 'violet', 'black', 'white'],
+            'alignment' : [ 'chaotic_evil', 'chaotic_neutral', 'chaotic_good',
+                            'neutral_evil', 'neutral_neutral', 'neutral_good',
+                            'lawful_evil', 'lawful_neutral', 'lawful_good' ]
+            }
 
         self.gender = 'none'
         self.size = 'none'

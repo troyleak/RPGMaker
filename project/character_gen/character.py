@@ -59,15 +59,15 @@ class Character(): # TODO: Add feats
         self.money = 0
         self.experience = 0
 
-    def create_char(character_, ability_scores_, attributes_, char_class_, feats_, gear_, race_, skills_, spells_):
-        character_.ability_scores = ability_scores_
-        character_.attributes = attributes_
-        character_.skills = skills_
-        character_.feats = feats_
-        character_.spells = spells_
-        character_.char_class = char_class_
-        character_.gear = gear_
-        character_.race = race_
+    def create_char(character, ability_scores, attributes, char_class, feats, gear, race, skills, spells):
+        character.ability_scores = ability_scores
+        character.attributes = attributes
+        character.skills = skills
+        character.feats = feats
+        character.spells = spells
+        character.char_class = char_class
+        character.gear = gear
+        character.race = race
 
 
     def set_attrib(self, attrib, value):
