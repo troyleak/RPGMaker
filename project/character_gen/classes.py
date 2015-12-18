@@ -18,7 +18,7 @@ class Char_Class():
         return
 
     def get_bab_mod(mod):
-        # Modifies
+        # Modulates based on number of levels between upgrades
         def calc_bab(level):
             # Takes a level, returns a list of Base Attack Bonuses for that level
             value = [level]
@@ -27,6 +27,7 @@ class Char_Class():
                 value.append(level)
                 level -= mod # tBreaks loop before appending if level < 5
             return level
+        return calc_bab
 
     def get_save_mod(my_mod, my_bonus):
         # my_mod must be a three-tuple of floats in fort ref will order
@@ -42,11 +43,17 @@ class Char_Class():
                 print("Error, not a save value")
                 return 0
             else:
-                result = []
+                result = {}
                 for i in xrange(1,4):
-                    result.append( int((level / my_mod) + my_bonus) )
+                    result.append(dict(valid_saves[i], int((level / my_mod[i]) + my_bonus[i])) )
                 return result
         return calc_save # now you can get some closure
+
+
+    def get_spells_mod(my_mod):
+        def calc_mod(my_mod):
+            return
+        return calc_mod
 
 
 
@@ -60,24 +67,25 @@ class Barbarian(Char_Class):
 
         self.hit_die = [2, 10]
         self.save_mods = Char_Class.get_save_mod((2.0, 3.0, 4.0), (2, 0, 0))
-# Fast movement, rage
-# Rage power, uncanny dodge
-# Trap sense +1
-# Rage power
-# Improved uncanny dodge
-# Rage power, Trap sense +2
-# Damage reduction 1/—
-# Rage power
-# Trap sense +3
-# Damage reduction 2/—, Rage power Greater rage
-# Rage power, Trap sense +4
-# Damage reduction 3/—
-# Indomitable will, Rage power
-# Trap sense +5
-# Damage reduction 4/—, Rage power Tireless rage
-# Rage power, Trap sense +6
-# Damage reduction 5/—
-# Mighty rage, Rage power
+
+    # Fast movement, rage
+    # Rage power, uncanny dodge
+    # Trap sense +1
+    # Rage power
+    # Improved uncanny dodge
+    # Rage power, Trap sense +2
+    # Damage reduction 1/—
+    # Rage power
+    # Trap sense +3
+    # Damage reduction 2/—, Rage power Greater rage
+    # Rage power, Trap sense +4
+    # Damage reduction 3/—
+    # Indomitable will, Rage power
+    # Trap sense +5
+    # Damage reduction 4/—, Rage power Tireless rage
+    # Rage power, Trap sense +6
+    # Damage reduction 5/—
+    # Mighty rage, Rage power
 
     def calc_bab(level):
         # Takes a level, returns a list of Base Attack Bonuses for that level
