@@ -14,10 +14,21 @@ def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
 
     print("Ability Stats updated")
 
-    # def random():
-    #     options = {'race':['dwarf', 'halfling', 'elf', 'human', 'gnome', 'half-orc', 'half-elf']}
-    #
-    #     self.race = 'none'
+# Dwarf
+# Elf
+# Gnome
+# Half_elf
+# Half_orc
+# Halfling
+# Human
+#
+# dwarf
+# elf
+# gnome
+# half_elf
+# half_orc
+# halfling
+# human
 
 
 class Dwarf():
@@ -35,23 +46,19 @@ class Dwarf():
 
         self.languages = ["Common","Dwarven"]
 
-        self.stats_list =   {"strength":0,
-                        "dexterity":0,
-                        "constitution":2,
-                        "intelligence":0,
-                        "wisdom":2,
-                        "charisma":(-2) }
+        self.stats_list =  {"strength":0,
+                            "dexterity":0,
+                            "constitution":2,
+                            "intelligence":0,
+                            "wisdom":2,
+                            "charisma":(-2) }
 
-        if (master.gender == 'male'):
-            self.example_names = ["Dolgrin", "Grunyar", "Harsk", "Kazmuk", "Morgrym", "Rogar"]
-            print("male names initialized")
-        if (master.gender == 'female'):
-            self.example_names = ["Agna", "Bodill", "Ingra", "Kotri", "Rusilka", "Yangrit"]
-            print("female names initialized")
+        self.example_names =   {'male':["Dolgrin", "Grunyar", "Harsk", "Kazmuk", "Morgrym", "Rogar"],
+                             'female':["Agna", "Bodill", "Ingra", "Kotri", "Rusilka", "Yangrit"] }
 
 
 
-    def make(self, master):
+    def make_dwarf(self, master):
         # Updates namedtuple for stat and modifier
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
@@ -64,7 +71,7 @@ class Elf():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_elf():
         print("test")
     # dostuff
 
@@ -73,7 +80,7 @@ class Gnome():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_gnome():
         print("test")
     # dostuff
 
@@ -82,7 +89,7 @@ class Half_elf():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_half_elf():
         print("test")
     # dostuff
 
@@ -91,7 +98,7 @@ class Half_orc():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_half_orc():
         print("test")
     # dostuff
 
@@ -100,7 +107,7 @@ class Halfling():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_halfling():
         print("test")
     # dostuff
 
@@ -109,11 +116,16 @@ class Human():
     def __init__(self, master):
         self.traits = []
 
-    def make():
+    def make_human():
         print("test")
     # dostuff
     # humans gain one more skill rank per level
 
 class Race():
     def __init__(self):
-        print("test")
+        self.options = ['dwarf', 'halfling', 'elf', 'human', 'gnome', 'half-orc', 'half-elf']
+        self.race = 'none'
+        self.traits =  {'':''}
+        self.languages = []
+        self.stats_list =  {"":0}
+        self.example_names =   {'male':[], 'female':[] }
