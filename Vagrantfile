@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
     vb.gui = false
 
     # Customize the amount of memory on the VM:
-    vb.memory = "512"
+    vb.memory = "1024"
   end
 
   config.vm.box = "ubuntu/trusty64"
@@ -57,11 +57,12 @@ Vagrant.configure(2) do |config|
 
   config.vm.synced_folder "./project/", "/usr/local/app/"
 
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   sudo apt-get update
-  #   sudo apt-get install -y python3
-  #   pip install flask flask_wtf flask_bootstrap
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get update
+    sudo apt-get install -y python3 python3-pip
+    sudo pip3 install flask flask_wtf flask_bootstrap
+    python3 /usr/local/app/RPGMaker.py &
+  SHELL
 
   #
   # View the documentation for the provider you are using for more
