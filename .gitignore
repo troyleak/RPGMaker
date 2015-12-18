@@ -25,6 +25,7 @@ Icon
 ._*
 
 .idea
+.vagrant
 
 # pytest
 .cache

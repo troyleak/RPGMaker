@@ -16,7 +16,7 @@ At the end the character sheet can be printed to PDF (or other file)
 Main program:
 
     Creates character and passes it around. The end result will be
-    a tree-like structure containing at the highest level only information about
+    a tree-like structure containing at the highest level only an interface for
     basic attributes like class, race, etc. The attribute classes will contain
     information about and application logic for the options of that attribute
 
@@ -32,22 +32,25 @@ Main program:
 
             Fix frontend glitches - Want form data accepted and displayed
 
+            Fix packaging. Figure out class structure
+
 '''
 
 from flask import Flask, render_template, flash, redirect, url_for
 from flask_bootstrap import Bootstrap
 
-from character import *
-from forms_test import *
+from character_gen import *
+
+from forms import *
 
 def create_app(configfile=None):
-    
+
     app = Flask(__name__)
     app.config.from_object('secrets')
     Bootstrap(app)
 
     created = False
-    character = Character()
+    char = character.Character
 
     @app.route("/")
     def entry():
@@ -57,7 +60,10 @@ def create_app(configfile=None):
     @app.route("/form", methods=('GET', 'POST'))
     def form():
 
-        form = WTF_Charsheet()
+        form = forms_test.WTF_Charsheet()
+        char.attributes = attributes.Attributes
+        char.ability_scores = ability_scores.Abilities
+        char.skills = skills.Skills
 
         if ( form.validate_on_submit() ):
             # form validation
@@ -65,10 +71,9 @@ def create_app(configfile=None):
 
             for element in form:
                 # Adds each element to its corresponding value in the character object
-                character.element = element.data.value
-                print(element)
+                char.element = element.data.value
 
-            return redirect(url_for('submit'), form=form, created=True, character=character)
+            return redirect(url_for('submit'), form=form, created=True, char=char)
 
         else:
             flash('Creating new Character')
@@ -78,7 +83,7 @@ def create_app(configfile=None):
 
     @app.route("/submit", methods=('GET', 'POST'))
     def submit():
-        return render_template('submit.html', form=form, created=created, character=character)
+        return render_template('submit.html', form=form, created=created, char=char)
 
     return app
 

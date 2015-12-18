@@ -14,40 +14,13 @@ Default constructor creates random/empty values.
 Call create method on Character object to populate with values
 '''
 
-import random
-from collections import namedtuple
-
-from classes import *
-from items import *
-from race import *
-from skills import *
-from spells import *
-
-
 class Character(): # TODO: Add feats
 
     def __init__(self):
 
-        # abilities
-        Ability = namedtuple('Ability', ['stat', 'mod'])
-
-        self.strength = Ability(0, 0)
-        self.dexterity = Ability(0, 0)
-        self.constitution = Ability(0, 0)
-        self.intelligence = Ability(0, 0)
-        self.wisdom = Ability(0, 0)
-        self.charisma = Ability(0, 0)
-
-        # attributes
-        self.gender = 'none'
-        self.race = 'none'
-        self.size = 'none'
-        self.age = 0
-        self.height = 0
-        self.weight = 0
-        self.hair = 'none'
-        self.eyes = 'none'
-        self.alignment = 'none'
+        self.ability_scores = None
+        self.attributes = None
+        self.skills = None
 
         # Saving throws and modifiers
         self.fortitude = 0
@@ -79,7 +52,6 @@ class Character(): # TODO: Add feats
         self.combat_maneuver_bonus = 0
         self.combat_maneuver_defense = 10
         self.class_skills = None
-        self.skills = Skills(self)
         self.num_feats = 0
         self.feats = None
         self.spells = None
@@ -95,34 +67,27 @@ class Character(): # TODO: Add feats
         self.money = 0
         self.experience = 0
 
+    def set_attrib(self, attrib, value):
+    # takes an attribute and a value and sets the value to the passed val
+    # checks its own member variables and if that exists, the list of
+    # options for that attribute before modifying the value
+    # TODO: Move to try/except
 
-    def roll_die(self, sides):
-        try:
-            random.seed(random.seed(random.random))
-            return random.randrange(1, sides+1)
-        except ValueError:
-            print("Error, invalid number of sides")
-
-
-    def set_ability_stat(self):
-        lst = []
-        for i in range(4):
-            tmp = self.roll_die(self, 6)
-            lst.append(tmp)
-        lst.sort(reverse=True)
-        lst.pop()
-        result = 0
-        for i in lst:
-            result += i
-        return result
+        if attrib in self.__dict__ and value in self.options[attrib]:
+            self.__dict__[attrib] = value
+        else:
+            print("Error modifying that attribute. Perhaps it doesn't exist?")
+        print("test")
 
 
-    def set_ability_mod(self, stat):
-        if stat >= 10:
-            modifier = (stat - 10) / 2
-        elif stat < 10:
-            modifier = (11 - stat) / 2 * -1
-        return modifier
-
-    def create():
-        print("Hello World")
+    def set_attribs_rand(self):
+        # sets attributes randomly
+        self.gender = random.choice(gender_opts)
+        self.race = random.choice(race_opts)
+        self.size = random.choice(size_opts)
+        self.age = random.choice(age_opts)
+        self.height = random.choice(height_opts)
+        self.weight = random.choice(weight_opts)
+        self.hair = random.choice(hair_opts)
+        self.eyes = random.choice(eyes_opts)
+        self.alignment = random.choice(alignment_opts)
