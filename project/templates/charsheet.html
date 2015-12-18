@@ -12,7 +12,7 @@
           {{ wtf.form_errors(form, hiddens="only") }}
 
           {% for field in form if field.widget.input_type != 'hidden' %}
-            {{ wtf.form_field(field) }}
+            {{ wtf.form_field(field, button_map={'submit':'primary'}) }}
           {% endfor %}
         </form>
       </div>
