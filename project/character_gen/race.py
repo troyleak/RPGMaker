@@ -1,5 +1,10 @@
 def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
-    # Stats is a dict containing the abilty name and the amount to modify
+    # Modifies the parent object with new stats based on the race
+    for i, j in stats:
+        master.i.stat += j
+        master.i.mod += (int(j/2.0)) # For every two points, add a modifier
+    # stats argument is a dict containing the ability name and the amount to
+    # add to the existing stat. Negative numbers will subtract
     # like so:
     # stats_list =   {"strength":0,
     #                 "dexterity":0,
@@ -7,12 +12,6 @@ def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
     #                 "intelligence":0,
     #                 "wisdom":0,
     #                 "charisma":0 }
-    # the modifier is adjusted based on this
-    for i, j in stats:
-        master.i.stat += j
-        master.i.mod += (int(j/2.0)) # For every two points, add a modifier
-
-    print("Ability Stats updated")
 
 # Dwarf
 # Elf
@@ -69,7 +68,24 @@ class Dwarf():
 
 class Elf():
     def __init__(self, master):
-        self.traits = []
+        self.traits =  {"Normal Speed":"",
+                        "Low-Light Vision":"",
+                        "Elven Immunities":"",
+                        "Elven Magic":"",
+                        "Keen Senses":"",
+                        "Weapon Familiarity":"" }
+
+        self.languages = ["Common","Elvish"]
+
+        self.stats_list =  {"strength":2,
+                            "dexterity":2,
+                            "constitution":(-2),
+                            "intelligence":0,
+                            "wisdom":0,
+                            "charisma":0 }
+
+        self.example_names =   {'male':["Caladrel", "Heldadel", "Lanliss", "Meirdrarel", "Seldlon", "Talathel", "Variel", "Zordlon"],
+                             'female':["Amrunelara", "Dardlara", "Faunra", "Jathal", "Merisiel", "Oparal", "Soumral", "Tessara", "Yalandlara"] }
 
     def make_elf():
         print("test")
