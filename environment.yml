@@ -1,0 +1,8 @@
+name: RPGMaker
+dependencies:
+- python=3
+- pip
+- pip:
+    - flask
+    - flask-wtf
+    - flask-bootstrap
