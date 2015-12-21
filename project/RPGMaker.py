@@ -71,6 +71,7 @@ def form():
     form = forms_test.WTF_Charsheet()
 
     if ( form.validate_on_submit() ):
+        session['submitted_form'] = form.data
         return redirect(url_for('submit'), form=form, created=True, char=char)
 
     return render_template('charsheet.html', form=form)
