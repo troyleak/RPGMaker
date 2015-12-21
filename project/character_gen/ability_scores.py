@@ -12,7 +12,11 @@ a new one. Maybe that will change later
 '''
 
 class Abilities():
+
     def __init__():
+
+        self.valid_stats = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']
+
         Ability = namedtuple('Ability', ['stat', 'mod'])
 
         self.strength = Ability(0, 0)
@@ -21,6 +25,7 @@ class Abilities():
         self.intelligence = Ability(0, 0)
         self.wisdom = Ability(0, 0)
         self.charisma = Ability(0, 0)
+
 
     def set_scores(self, str_, dex_, con_, int_, wis_, cha_):
         self.strength = Ability(str_, set_ability_mod(str_) )
