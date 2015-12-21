@@ -48,7 +48,6 @@ class Abilities():
             result += i
         return result
 
-
     def set_ability_mod(self, stat):
         # returns the ability modifier for a given stat
         if stat >= 10:
