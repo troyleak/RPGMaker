@@ -13,18 +13,30 @@ a new one. Maybe that will change later
 
 class Abilities():
 
-    def __init__():
+    def __init__(self):
 
         self.valid_stats = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']
 
         Ability = namedtuple('Ability', ['stat', 'mod'])
 
-        self.strength = Ability(0, 0)
-        self.dexterity = Ability(0, 0)
-        self.constitution = Ability(0, 0)
-        self.intelligence = Ability(0, 0)
-        self.wisdom = Ability(0, 0)
-        self.charisma = Ability(0, 0)
+        self.strength = Ability(10, 0)
+        self.dexterity = Ability(10, 0)
+        self.constitution = Ability(10, 0)
+        self.intelligence = Ability(10, 0)
+        self.wisdom = Ability(10, 0)
+        self.charisma = Ability(10, 0)
+
+        # Saving throws and modifiers
+        self.fortitude = 0
+        self.fort_magic_mod = 0
+        self.fort_misc_mod = 0
+        self.reflex = 0
+        self.reflex_magic_mod = 0
+        self.reflex_misc_mod = 0
+        self.will = 0
+        self.will_magic_mod = 0
+        self.will_misc_mod = 0
+
 
 
     def set_scores(self, str_, dex_, con_, int_, wis_, cha_):
@@ -55,3 +67,13 @@ class Abilities():
         elif stat < 10:
             modifier = (11 - stat) / 2 * -1
         return modifier
+
+    def get_ability_scores(self):
+        for i in ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']:
+            ability_score_list.append(self.i[stat])
+        return ability_score_list
+
+    def get_ability_mods(self):
+        for i in ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']:
+            ability_score_list.append(self.i[mod])
+        return ability_score_list

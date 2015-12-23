@@ -50,16 +50,7 @@ Bootstrap(app)
 
 created = False
 char = character.Character
-abilities = ability_scores.Abilities
-attributes = attributes.Attributes
-race = race.Race
-char_class = classes.Char_Class
-skills = skills.Skills
-feats = feats.Feats
-gear = gear.Gear
-spells = spells.Spells
 
-char.create_char(char, abilities, attributes, race, char_class, skills, feats, gear, spells)
 
 @app.route("/")
 def entry():

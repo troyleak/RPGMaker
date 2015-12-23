@@ -9,9 +9,9 @@
 <div class="panel-body">
   <h2><p class="text-center">Your Character</p></h2>
   <ul class="list-group container-fluid">
-    <li class="list-group-item disabled"><h3>Attributes: </h3></li>
+    <li class="list-group-item disabled"><h3>Ability Scores: </h3></li>
     {% for i in char.__dict__ %}
-      <li class="list-group-item">{{ i }}<span class="badge">{{ char.__dict__[i] }}</span></li>
+      <li class="list-group-item">{{ i }}<span class="badge">{{ char[i] }}</span></li>
     {% endfor %}
   </ul>
   <div class="panel-bottom">
