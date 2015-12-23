@@ -1,7 +1,8 @@
 
 '''
 Default constructor creates empty values.
-Call set_attribs_rand method on Character object to populate with random values
+Call set_attribs_rand method on Character object to populate with random
+values
 Call set_attrib to change an individual parameter
 '''
 
@@ -28,33 +29,6 @@ class Character(): # TODO: Add feats
         self.will = 0
         self.will_magic_mod = 0
         self.will_misc_mod = 0
-
-        # misc modifiers
-        self.base_attack_bonus = 0
-        self.spell_resist = 0
-        self.armor_class = 10
-        self.ac_touch = 0
-        self.ac_flat = 0
-        self.speed = 0
-        self.initiative = 0
-        self.hit_points = 0
-        self.armor_bonus = 0
-        self.shield_bonus = 0
-        self.dodge_bonus = 0
-        self.size_mod = 0
-        self.natural_armor = 0
-        self.deflection_mod = 0
-        self.misc_armor_mod = 0
-        self.combat_maneuver_bonus = 0
-        self.combat_maneuver_defense = 10
-        self.class_skills = None
-        self.num_feats = 0
-        self.languages = None
-        self.is_caster = False
-        self.spell_failure = 0
-        self.character_level = 1
-        self.favored_hp = True
-        self.build = 'Random'
 
         self.money = 0
         self.experience = 0
