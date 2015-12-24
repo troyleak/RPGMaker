@@ -1,16 +1,18 @@
 import random
 
 class Dice():
-    
-    def roll_dice(self, sides, dice):
-        for i in dice:
-            result_list.append(roll_die)
-        return result_list
 
+    def roll_dice(sides, dice):
+        # returns a list of the outcome of the specified number of die rolls
+        random.seed(random.seed(random.random))
 
-    def roll_die(self, sides):
-        try:
-            random.seed(random.seed(random.random))
-            return random.randrange(1, sides+1)
-        except ValueError:
-            print("Error, invalid number of sides")
+        if dice == 0:
+            dice = 1
+        # If no dice are input, default to 1
+
+        result = []
+
+        for i in range(dice):
+            result.append(random.randrange(1, sides+1))
+
+        return result
