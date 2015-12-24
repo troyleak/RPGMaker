@@ -1,4 +1,6 @@
 from collections import namedtuple
+from . import dice
+
 
 '''
 Abilities
@@ -48,19 +50,17 @@ class Abilities():
         self.charisma = Ability(cha_, set_ability_mod(cha_) )
 
 
-    def set_ability_stat_rand(self):
-        lst = []
-        for i in range(4):
-            tmp = super.roll_die(self, 6) # use roll_die in character for portability
-            lst.append(tmp)
-        lst.sort(reverse=True)
-        lst.pop()
-        result = 0
-        for i in lst:
-            result += i
+    def set_ability_stat_rand(self, stat):
+        # Sets the specified stat to a random value using the roll 4 drop 1 method
+        lst = dice.Dice.roll_dice(6, 4)
+        result = dice.Dice.drop_lowest(lst)
+        result = sum(result)
+        self.stat = result
+        print("setting " + str(stat) + " to " + str(result))
         return result
 
-    def set_ability_mod(self, stat):
+
+    def set_ability_mod(stat):
         # returns the ability modifier for a given stat
         if stat >= 10:
             modifier = (stat - 10) / 2

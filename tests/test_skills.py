@@ -1,6 +1,6 @@
 import unittest
 
-from app.character_gen import *
+from app.character_gen import skills
 
 class TestCharacter(unittest.TestCase):
 

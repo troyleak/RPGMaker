@@ -1,6 +1,6 @@
 import unittest
 
-from app.character_gen import *
+from app.character_gen import attributes
 
 class TestCharacter(unittest.TestCase):
 

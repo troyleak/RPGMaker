@@ -1,22 +1,16 @@
 import unittest
 
-from app.character_gen import *
+from app.character_gen.ability_scores import Abilities
 
-class TestCharacter(unittest.TestCase):
+class TestAbilityScores(unittest.TestCase):
 
-  def test_ability_scores(self):
-      self.assertEqual('foo'.upper(), 'FOO')
-  #
-  # def test_race(self):
-  #     self.assertTrue('FOO'.isupper())
-  #     self.assertFalse('Foo'.isupper())
-  #
-  # def test_class(self):
-  #     s = 'hello world'
-  #     self.assertEqual(s.split(), ['hello', 'world'])
-  #     # check that s.split fails when the separator is not a string
-  #     with self.assertRaises(TypeError):
-  #         s.split(2)
+    def test_set_ability_scores_rand(self):
+        stat = "Strength"
+        result = Abilities.set_ability_stat_rand(self, stat)
+        self.assertIsInstance(result, int)
+        self.assertIn(result, range(3, 19))
+
+
 
 if __name__ == '__main__':
     unittest.main()

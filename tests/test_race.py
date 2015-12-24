@@ -1,6 +1,6 @@
 import unittest
 
-from app.character_gen import *
+from app.character_gen import race
 
 class TestCharacter(unittest.TestCase):
 
