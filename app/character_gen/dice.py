@@ -1,8 +1,11 @@
 import random
 
 class Dice():
+    
     def roll_dice(self, sides, dice):
-        print("test")
+        for i in dice:
+            result_list.append(roll_die)
+        return result_list
 
 
     def roll_die(self, sides):
