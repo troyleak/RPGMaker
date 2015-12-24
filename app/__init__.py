@@ -1,1 +1,1 @@
-__all__ = [ "character_gen", "RPGMaker" ]
+__all__ = [ "character_gen", "RPGMaker", "forms" ]
