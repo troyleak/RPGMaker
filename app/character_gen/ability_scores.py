@@ -19,14 +19,23 @@ class Abilities():
 
         self.valid_stats = ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']
 
-        Ability = namedtuple('Ability', ['stat', 'mod'])
+        self.strength = 10
+        self.strength_mod = 0
 
-        self.strength = Ability(10, 0)
-        self.dexterity = Ability(10, 0)
-        self.constitution = Ability(10, 0)
-        self.intelligence = Ability(10, 0)
-        self.wisdom = Ability(10, 0)
-        self.charisma = Ability(10, 0)
+        self.dexterity = 10
+        self.dexterity_mod = 0
+
+        self.constitution = 10
+        self.constitution_mod = 0
+
+        self.intelligence = 10
+        self.intelligence_mod = 0
+
+        self.wisdom = 10
+        self.wisdom_mod = 0
+
+        self.charisma = 10
+        self.charisma_mod = 0
 
         # Saving throws and modifiers
         self.fortitude = 0
@@ -50,14 +59,15 @@ class Abilities():
         self.charisma = Ability(cha_, set_ability_mod(cha_) )
 
 
+
     def set_ability_stat_rand(self, stat):
         # Sets the specified stat to a random value using the roll 4 drop 1 method
         lst = dice.Dice.roll_dice(6, 4)
-        result = dice.Dice.drop_lowest(lst)
-        result = sum(result)
+        result = sum(dice.Dice.drop_lowest(lst))
         self.stat = result
         print("setting " + str(stat) + " to " + str(result))
         return result
+
 
 
     def set_ability_mod(stat):
@@ -68,12 +78,14 @@ class Abilities():
             modifier = (11 - stat) / 2 * -1
         return modifier
 
+
+
     def get_ability_scores(self):
-        for i in ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']:
-            ability_score_list.append(self.i[stat])
-        return ability_score_list
+        return [self.strength, self.dexterity, self.constitution,
+                self.intelligence, self.wisdom, self.charisma]
+
+
 
     def get_ability_mods(self):
-        for i in ['strength', 'dexterity', 'constitution', 'intelligence', 'wisdom', 'charisma']:
-            ability_score_list.append(self.i[mod])
-        return ability_score_list
+        return [self.strength_mod, self.dexterity_mod, self.constitution_mod,
+                self.intelligence_mod, self.wisdom_mod, self.charisma_mod]
