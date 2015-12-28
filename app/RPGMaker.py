@@ -40,12 +40,15 @@ from flask import Flask, render_template, flash, redirect, url_for, session, req
 from flask_bootstrap import Bootstrap
 
 from character_gen import *
+from secrets import *
 
 from forms import *
 
 
 app = Flask(__name__)
-app.config.from_object('secrets')
+app.secret_key = '\xda\xd2\x02\xa1w\xd3B\x93\x93\x8e"\xc0n\x14\xc4w\xc4\x10\xf2\xba\t\x8b0\xb9'
+# app.config.from_object('secrets')
+
 Bootstrap(app)
 
 char = character.Character()
@@ -58,15 +61,16 @@ def entry():
 
 @app.route("/form", methods=('GET', 'POST'))
 def form():
+
     form = forms.WTF_Charsheet()
+    session['submitted_form'] = form.data
+
     if request.method == 'POST' and form.validate():
-        flash("created new character")
-        form.populate_obj(char)
-        session['submitted_form'] = form.data
-        return redirect(url_for('submit'), form=form, char=char, form_data=form_data)
-    else:
-        app.logger.debug(form.errors)
-    return render_template('charsheet.html', form=form)
+        app.logger.debug(form.data)
+        return redirect(url_for('submit'))
+
+    # app.logger.debug(form.errors)
+    return render_template('charsheet.html', form=form, char=char)
 
 
 @app.route("/submit", methods=('GET', 'POST'))

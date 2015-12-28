@@ -118,4 +118,4 @@ class WTF_Charsheet(Form):
     weapon = FormField(WTF_Weapon)
     armor = FormField(WTF_Armor)
     item = FormField(WTF_Item)
-    submit = SubmitField('Submit')
+    submit = SubmitField()

@@ -9,7 +9,7 @@
       <div class="form-group">
         <form action="/submit" method="POST" enctype="multipart/form-data" role="form">
           {{ form.csrf_token }}
-          {% for field in form if field.widget.input_type != ('hidden', 'submit') %}
+          {% for field in form if field.widget.input_type != 'hidden' %}
             {{ field.csrf_token }}
             {{ wtf.form_field(field, form_type="horizontal", button_map={'submit':'primary'}) }}
           {% endfor %}
