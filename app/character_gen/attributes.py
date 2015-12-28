@@ -17,9 +17,9 @@ class Attributes():
         self.options = {
             'gender' : ['male', 'female'],
             'size' : ['large', 'medium', 'small'],
-            'age' : list(xrange(18, 400)),
-            'height' : list(xrange(100, 200)),
-            'weight' : list(xrange(150, 300)),
+            'age' : list(range(18, 400)),
+            'height' : list(range(100, 200)),
+            'weight' : list(range(150, 300)),
             'hair' : ['red', 'orange', 'yellow', 'green', 'blue',
                       'indigo', 'violet', 'black', 'white'],
             'eyes' : ['red', 'orange', 'yellow', 'green', 'blue',
@@ -75,6 +75,8 @@ class Attributes():
             print("Error modifying that attribute. Perhaps it doesn't exist?")
     # checks its own member variables and if that exists, the list of
     # options for that attribute before modifying the value
+    #
+        #            or use: vars(self)
         # if attrib in self.__dict__ and value in self.options[attrib]:
         #     self.__dict__[attrib] = value
         # else:

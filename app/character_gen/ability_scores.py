@@ -50,13 +50,24 @@ class Abilities():
 
 
 
-    def set_scores(self, str_, dex_, con_, int_, wis_, cha_):
-        self.strength = Ability(str_, set_ability_mod(str_) )
-        self.dexterity = Ability(dex_, set_ability_mod(dex_) )
-        self.constitution = Ability(con_, set_ability_mod(con_) )
-        self.intelligence = Ability(int_, set_ability_mod(int_) )
-        self.wisdom = Ability(wis_, set_ability_mod(wis_) )
-        self.charisma = Ability(cha_, set_ability_mod(cha_) )
+    def set_ability_scores(self, str_, dex_, con_, int_, wis_, cha_):
+        self.strength = str_
+        self.strength_mod = self.set_ability_mod(str_)
+
+        self.dexterity = dex_
+        self.dexterity_mod = self.set_ability_mod(dex_)
+
+        self.constitution = con_
+        self.constitution_mod = self.set_ability_mod(con_)
+
+        self.intelligence = int_
+        self.intelligence_mod = self.set_ability_mod(int_)
+
+        self.wisdom = wis_
+        self.wisdom_mod = self.set_ability_mod(wis_)
+
+        self.charisma = cha_
+        self.charisma_mod = self.set_ability_mod(cha_)
 
 
 
@@ -70,7 +81,7 @@ class Abilities():
 
 
 
-    def set_ability_mod(stat):
+    def set_ability_mod(self, stat):
         # returns the ability modifier for a given stat
         if stat >= 10:
             modifier = (stat - 10) / 2

@@ -31,3 +31,6 @@ class Character(): # TODO: Add feats
         self.spells = spells
         self.gear = gear
         self.attributes = attributes
+
+    def assign_stats(self, stat, scores):
+        return self

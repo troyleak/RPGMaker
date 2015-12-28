@@ -4,6 +4,10 @@ from app.character_gen.ability_scores import Abilities
 
 class TestAbilityScores(unittest.TestCase):
 
+    def test_init_ability_scores(self):
+        result = Abilities()
+        self.assertIsInstance(result, Abilities)
+
     def test_set_ability_stat_rand(self):
         stat = "strength"
         result = Abilities.set_ability_stat_rand(self, stat)
@@ -28,6 +32,14 @@ class TestAbilityScores(unittest.TestCase):
         result = ability_scores.get_ability_mods()
         self.assertIsInstance(result, list)
         self.assertIn(sum(result), range((-2), 10))
+
+
+    def test_set_scores(self):
+        ability_scores = Abilities()
+        ability_scores.set_ability_scores(18, 18, 18, 18, 18, 18)
+        self.assertIsInstance(ability_scores.strength, int)
+        self.assertIs(ability_scores.strength, 18)
+
 
 if __name__ == '__main__':
     unittest.main()
