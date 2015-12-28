@@ -48,8 +48,7 @@ app = Flask(__name__)
 app.config.from_object('secrets')
 Bootstrap(app)
 
-created = False
-char = character.Character
+char = character.Character()
 
 
 @app.route("/")
@@ -63,14 +62,14 @@ def form():
 
     if ( form.validate_on_submit() ):
         session['submitted_form'] = form.data
-        return redirect(url_for('submit'), form=form, created=True, char=char)
+        return redirect(url_for('submit'), form=form, char=char)
 
     return render_template('charsheet.html', form=form)
 
 
 @app.route("/submit", methods=('GET', 'POST'))
 def submit():
-    return render_template('submit.html', form=form, created=created, char=char)
+    return render_template('submit.html', form=form, char=char)
 
 
 
