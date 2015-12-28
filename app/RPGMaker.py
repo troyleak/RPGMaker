@@ -36,7 +36,7 @@ Main program:
 
 '''
 
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template, flash, redirect, url_for, session, request
 from flask_bootstrap import Bootstrap
 
 from character_gen import *
@@ -59,17 +59,20 @@ def entry():
 @app.route("/form", methods=('GET', 'POST'))
 def form():
     form = forms_test.WTF_Charsheet()
-
-    if ( form.validate_on_submit() ):
-        session['submitted_form'] = form.data
+    session['submitted_form'] = form.data
+    if request.method == 'POST' and form.validate():
+        flash("created new character")
+        form.populate_obj(char)
         return redirect(url_for('submit'), form=form, char=char)
-
+    else:
+        app.logger.debug(form.errors)
     return render_template('charsheet.html', form=form)
 
 
 @app.route("/submit", methods=('GET', 'POST'))
 def submit():
-    return render_template('submit.html', form=form, char=char)
+    form_data = session['submitted_form']
+    return render_template('submit.html', form=form, char=char, form_data=form_data)
 
 
 

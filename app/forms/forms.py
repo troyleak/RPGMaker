@@ -1,9 +1,12 @@
-from flask_wtf import Form
+# from flask_wtf import Form
 from wtforms import validators
-from wtforms import StringField as strf, IntegerField as intf, FormField, SubmitField
+from wtforms import Form, StringField as strf, IntegerField as intf, FormField, SubmitField
 
 # TODO: Finish validate input
 #       Plug frontend into backend
+
+# Originally intended to use flask_wtf for this, however due to a bug in
+# CSRF token handling with nested formfields, I'm using the default wtform lib
 
 class WTF_Attributes(Form):
     name = strf(u'Name', validators=[validators.Required()])

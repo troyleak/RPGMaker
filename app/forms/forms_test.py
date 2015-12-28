@@ -1,8 +1,8 @@
-from flask_wtf import Form
+# from flask_wtf import Form
 from wtforms.validators import *
-from wtforms import StringField, IntegerField, FormField, SubmitField, validators
+from wtforms import Form, StringField, IntegerField, FormField, SubmitField, validators
 
-# TODO: Debug validate input - Required input works, but numberrange doesn't 
+# TODO: Debug validate input - Required input works, but numberrange doesn't
 #       Plug frontend into backend
 
 class WTF_Attributes(Form):

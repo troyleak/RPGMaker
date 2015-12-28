@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
   config.vm.synced_folder "./app/", "/usr/local/app/"
 
   config.vm.provision "shell", inline: <<-SHELL
-    sh /launchRPGMaker.sh
+    sh /usr/local/app/launchRPGMaker.sh >&2
   SHELL
 
 end

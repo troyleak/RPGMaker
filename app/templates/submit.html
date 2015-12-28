@@ -10,7 +10,7 @@
   <h2><p class="text-center">Your Character</p></h2>
   <ul class="list-group container-fluid">
     <li class="list-group-item disabled"><h3>Ability Scores: </h3></li>
-    {% for i in char.__dict__ %}
+    {% for i in char.__dict__.keys() %}
       <li class="list-group-item">{{ i }}<span class="badge">{{ char[i] }}</span></li>
     {% endfor %}
   </ul>
