@@ -58,12 +58,12 @@ def entry():
 
 @app.route("/form", methods=('GET', 'POST'))
 def form():
-    form = forms_test.WTF_Charsheet()
-    session['submitted_form'] = form.data
+    form = forms.WTF_Charsheet()
     if request.method == 'POST' and form.validate():
         flash("created new character")
         form.populate_obj(char)
-        return redirect(url_for('submit'), form=form, char=char)
+        session['submitted_form'] = form.data
+        return redirect(url_for('submit'), form=form, char=char, form_data=form_data)
     else:
         app.logger.debug(form.errors)
     return render_template('charsheet.html', form=form)

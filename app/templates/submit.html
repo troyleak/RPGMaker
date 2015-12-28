@@ -5,15 +5,32 @@
 {% block title %}Submitted{% endblock %}
 
 {% block page_content %}
-<div class="panel panel-default bg-success">
-<div class="panel-body">
-  <h2><p class="text-center">Your Character</p></h2>
-  <ul class="list-group container-fluid">
-    <li class="list-group-item disabled"><h3>Ability Scores: </h3></li>
-    {% for i in char.__dict__.keys() %}
-      <li class="list-group-item">{{ i }}<span class="badge">{{ char[i] }}</span></li>
-    {% endfor %}
-  </ul>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h2><p class="text-center">Your Character</p></h2>
+    <ul class="list-group container-fluid">
+      <li class="list-group-item disabled"><h3>Character Ability Scores: </h3></li>
+      {% for i in char.__dict__.keys() %}
+        <li class="list-group-item">{{ i }}<span class="badge">{{ char[i] }}</span></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="panel-body">
+    <ul class="list-group container-fluid">
+      {% for title in form_data if title != 'submit' %}
+      <li class="list-group-item disabled text-capitalize"><h3>{{ title }}: </h3></li>
+
+        {% for item in form_data[title] %}
+          <li class="list-group-item">{{ item }}
+            <span class="badge">{{ form_data[title].get(item) }}</span>
+          </li>
+        {% endfor %}
+
+      {% endfor %}
+    </ul>
+  </div>
+
   <div class="panel-bottom">
     <a class="btn btn-primary" href="/form">Start Over</a>
   </div>
