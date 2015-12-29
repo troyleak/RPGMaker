@@ -25,18 +25,15 @@ class Character(): # TODO: Add feats
         self.experience = 0
 
     def __iter__(self):
-        # Overrides iter to output the character class in a sensible way -- eventually
+        # Overrides iter to output the character class in a sensible way
         result = []
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(vars(ability_scores))
-        result.append(money)
-        result.append(experience)
-        return self
+
+        for _val_ in self.__dict__:
+            ## needs to check if _val_ is a member class or if it's a value
+            # if it's a value print it, otherwise defer to child obj __iter__
+            result.append(vars(self.i.__dict__))
+
+        return result
 
 
     # should recreate this to change one class. Can be iterated over a list of classes to change them
