@@ -36,7 +36,7 @@ Main program:
 
 '''
 
-from flask import Flask, render_template, flash, redirect, url_for, session, request
+from flask import Flask, render_template, flash, redirect, url_for, session, request, Response
 from flask_bootstrap import Bootstrap
 
 from character_gen import *
@@ -46,7 +46,7 @@ from forms import *
 
 
 app = Flask(__name__)
-app.secret_key = '\xda\xd2\x02\xa1w\xd3B\x93\x93\x8e"\xc0n\x14\xc4w\xc4\x10\xf2\xba\t\x8b0\xb9'
+app.secret_key = SECRET_KEY
 # app.config.from_object('secrets')
 
 Bootstrap(app)
@@ -63,13 +63,15 @@ def entry():
 def form():
 
     form = forms.WTF_Charsheet()
-    session['submitted_form'] = form.data
+
+    # Maybe need to make a superform and then iterate over it to access the subforms
 
     if request.method == 'POST' and form.validate():
-        app.logger.debug(form.data)
+        responses = request.form
+        session['submitted_form'] = responses
+        app.logger.debug(responses)
         return redirect(url_for('submit'))
 
-    # app.logger.debug(form.errors)
     return render_template('charsheet.html', form=form, char=char)
 
 

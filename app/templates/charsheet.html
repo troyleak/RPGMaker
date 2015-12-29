@@ -7,7 +7,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
       <div class="form-group">
-        <form action="/submit" method="POST" enctype="multipart/form-data" role="form">
+        <form action="" method="POST" enctype="multipart/form-data" role="form">
           {{ form.csrf_token }}
           {% for field in form if field.widget.input_type != 'hidden' %}
             {{ field.csrf_token }}

@@ -5,9 +5,6 @@ Contains class logic. I expect this one to be quite fun
 
 For now skills and stats will be modified. Feats may come later
 
-REMINDER: Functions are first class objects. You can pass an
-"unfinished" function around. Use decorators and closures.
-
 '''
 class Char_Class():
     def __init__(self):

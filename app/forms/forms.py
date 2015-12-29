@@ -1,6 +1,6 @@
 # from flask_wtf import Form
-from wtforms import validators
-from wtforms import Form, StringField as strf, IntegerField as intf, FormField, SubmitField
+from wtforms.validators import NumberRange, Optional
+from wtforms import Form, StringField, IntegerField, FormField, SubmitField
 
 # TODO: Finish validate input
 #       Plug frontend into backend
@@ -9,106 +9,106 @@ from wtforms import Form, StringField as strf, IntegerField as intf, FormField, 
 # CSRF token handling with nested formfields, I'm using the default wtform lib
 
 class WTF_Attributes(Form):
-    name = strf(u'Name')
-    level = intf(u'Level', validators=[validators.NumberRange(0, 0)])
-    player = strf(u'Player')
-    gender = strf(u'Gender')
-    race = strf(u'Race')
-    size = strf(u'Size')
-    age = strf(u'Age')
-    height = intf(u'Height', validators=[validators.NumberRange(0, 0)])
-    weight = intf(u'Weight', validators=[validators.NumberRange(0, 0)])
-    hair = strf(u'Hair')
-    eyes = strf(u'Eyes')
-    alignment = strf(u'Alignment')
-    deity = strf(u'Deity')
-    homeland = strf(u'Homeland')
+    name = StringField(u'Name')
+    level = IntegerField(u'Level', validators=[NumberRange(0, 0), Optional()])
+    player = StringField(u'Player')
+    gender = StringField(u'Gender')
+    race = StringField(u'Race')
+    size = StringField(u'Size')
+    age = StringField(u'Age')
+    height = IntegerField(u'Height', validators=[NumberRange(0, 0), Optional()])
+    weight = IntegerField(u'Weight', validators=[NumberRange(0, 0), Optional()])
+    hair = StringField(u'Hair')
+    eyes = StringField(u'Eyes')
+    alignment = StringField(u'Alignment')
+    deity = StringField(u'Deity')
+    homeland = StringField(u'Homeland')
 
 
 
 class WTF_Abilities(Form):
 
-    strength = intf(u'Strength', validators=[validators.NumberRange(0, 0)])
-    dexterity = intf(u'Dexterity', validators=[validators.NumberRange(0, 0)])
-    constitution = intf(u'Constitution', validators=[validators.NumberRange(0, 0)])
-    intelligence = intf(u'Intelligence', validators=[validators.NumberRange(0, 0)])
-    wisdom = intf(u'Wisdom', validators=[validators.NumberRange(0, 0)])
-    charisma = intf(u'Charisma', validators=[validators.NumberRange(0, 0)])
+    strength = IntegerField(u'Strength', validators=[NumberRange(0, 0), Optional()])
+    dexterity = IntegerField(u'Dexterity', validators=[NumberRange(0, 0), Optional()])
+    constitution = IntegerField(u'Constitution', validators=[NumberRange(0, 0), Optional()])
+    intelligence = IntegerField(u'Intelligence', validators=[NumberRange(0, 0), Optional()])
+    wisdom = IntegerField(u'Wisdom', validators=[NumberRange(0, 0), Optional()])
+    charisma = IntegerField(u'Charisma', validators=[NumberRange(0, 0), Optional()])
 
 
 
 class WTF_Skills(Form):
 
-    acrobatics = intf(u'Acrobatics', validators=[validators.NumberRange(0, 0)])
-    appraise = intf(u'Appraise', validators=[validators.NumberRange(0, 0)])
-    bluff = intf(u'Bluff', validators=[validators.NumberRange(0, 0)])
-    climb = intf(u'Climb', validators=[validators.NumberRange(0, 0)])
-    craft_a = intf(u'Craft a', validators=[validators.NumberRange(0, 0)])
-    craft_b = intf(u'Craft b', validators=[validators.NumberRange(0, 0)])
-    craft_c = intf(u'Craft c', validators=[validators.NumberRange(0, 0)])
-    diplomacy = intf(u'Diplomacy', validators=[validators.NumberRange(0, 0)])
-    disable_device = intf(u'Disable Device', validators=[validators.NumberRange(0, 0)])
-    disguise = intf(u'Disguise', validators=[validators.NumberRange(0, 0)])
-    escape_artist = intf(u'Escape Artist', validators=[validators.NumberRange(0, 0)])
-    fly = intf(u'Fly', validators=[validators.NumberRange(0, 0)])
-    handle_animal = intf(u'Handle Animal', validators=[validators.NumberRange(0, 0)])
-    heal = intf(u'Heal', validators=[validators.NumberRange(0, 0)])
-    intimidate = intf(u'Intimidate', validators=[validators.NumberRange(0, 0)])
-    knowledge_arcana = intf(u'Knowledge Arcana', validators=[validators.NumberRange(0, 0)])
-    knowledge_dungeoneering = intf(u'Knowledge - Dungeoneering', validators=[validators.NumberRange(0, 0)])
-    knowledge_engineering = intf(u'Knowledge - Engineering', validators=[validators.NumberRange(0, 0)])
-    knowledge_geography = intf(u'Knowledge - Geography', validators=[validators.NumberRange(0, 0)])
-    knowledge_history = intf(u'Knowledge - History', validators=[validators.NumberRange(0, 0)])
-    knowledge_local = intf(u'Knowledge - Local', validators=[validators.NumberRange(0, 0)])
-    knowledge_nature = intf(u'Knowledge - Nature', validators=[validators.NumberRange(0, 0)])
-    knowledge_nobility = intf(u'Knowledge - Nobility', validators=[validators.NumberRange(0, 0)])
-    knowledge_planes = intf(u'Knowledge - Planes', validators=[validators.NumberRange(0, 0)])
-    knowledge_religion = intf(u'Knowledge - Religion', validators=[validators.NumberRange(0, 0)])
-    linguistics = intf(u'Linguistics', validators=[validators.NumberRange(0, 0)])
-    perception = intf(u'Perception', validators=[validators.NumberRange(0, 0)])
-    perform_a = intf(u'Perform A', validators=[validators.NumberRange(0, 0)])
-    perform_b = intf(u'Perform B', validators=[validators.NumberRange(0, 0)])
-    profession_a = intf(u'Profession A', validators=[validators.NumberRange(0, 0)])
-    profession_b = intf(u'Profession B', validators=[validators.NumberRange(0, 0)])
-    ride = intf(u'Ride', validators=[validators.NumberRange(0, 0)])
-    sense_motive = intf(u'Sense Motive', validators=[validators.NumberRange(0, 0)])
-    sleight_of_hand = intf(u'Sleight of Hand', validators=[validators.NumberRange(0, 0)])
-    spellcraft = intf(u'Spellcraft', validators=[validators.NumberRange(0, 0)])
-    stealth = intf(u'Stealth', validators=[validators.NumberRange(0, 0)])
-    survival = intf(u'Survival', validators=[validators.NumberRange(0, 0)])
-    swim = intf(u'Swim', validators=[validators.NumberRange(0, 0)])
-    use_magic_device = intf(u'Use Magic Device', validators=[validators.NumberRange(0, 0)])
+    acrobatics = IntegerField(u'Acrobatics', validators=[NumberRange(0, 0), Optional()])
+    appraise = IntegerField(u'Appraise', validators=[NumberRange(0, 0), Optional()])
+    bluff = IntegerField(u'Bluff', validators=[NumberRange(0, 0), Optional()])
+    climb = IntegerField(u'Climb', validators=[NumberRange(0, 0), Optional()])
+    craft_a = IntegerField(u'Craft a', validators=[NumberRange(0, 0), Optional()])
+    craft_b = IntegerField(u'Craft b', validators=[NumberRange(0, 0), Optional()])
+    craft_c = IntegerField(u'Craft c', validators=[NumberRange(0, 0), Optional()])
+    diplomacy = IntegerField(u'Diplomacy', validators=[NumberRange(0, 0), Optional()])
+    disable_device = IntegerField(u'Disable Device', validators=[NumberRange(0, 0), Optional()])
+    disguise = IntegerField(u'Disguise', validators=[NumberRange(0, 0), Optional()])
+    escape_artist = IntegerField(u'Escape Artist', validators=[NumberRange(0, 0), Optional()])
+    fly = IntegerField(u'Fly', validators=[NumberRange(0, 0), Optional()])
+    handle_animal = IntegerField(u'Handle Animal', validators=[NumberRange(0, 0), Optional()])
+    heal = IntegerField(u'Heal', validators=[NumberRange(0, 0), Optional()])
+    intimidate = IntegerField(u'Intimidate', validators=[NumberRange(0, 0), Optional()])
+    knowledge_arcana = IntegerField(u'Knowledge Arcana', validators=[NumberRange(0, 0), Optional()])
+    knowledge_dungeoneering = IntegerField(u'Knowledge - Dungeoneering', validators=[NumberRange(0, 0), Optional()])
+    knowledge_engineering = IntegerField(u'Knowledge - Engineering', validators=[NumberRange(0, 0), Optional()])
+    knowledge_geography = IntegerField(u'Knowledge - Geography', validators=[NumberRange(0, 0), Optional()])
+    knowledge_history = IntegerField(u'Knowledge - History', validators=[NumberRange(0, 0), Optional()])
+    knowledge_local = IntegerField(u'Knowledge - Local', validators=[NumberRange(0, 0), Optional()])
+    knowledge_nature = IntegerField(u'Knowledge - Nature', validators=[NumberRange(0, 0), Optional()])
+    knowledge_nobility = IntegerField(u'Knowledge - Nobility', validators=[NumberRange(0, 0), Optional()])
+    knowledge_planes = IntegerField(u'Knowledge - Planes', validators=[NumberRange(0, 0), Optional()])
+    knowledge_religion = IntegerField(u'Knowledge - Religion', validators=[NumberRange(0, 0), Optional()])
+    linguistics = IntegerField(u'Linguistics', validators=[NumberRange(0, 0), Optional()])
+    perception = IntegerField(u'Perception', validators=[NumberRange(0, 0), Optional()])
+    perform_a = IntegerField(u'Perform A', validators=[NumberRange(0, 0), Optional()])
+    perform_b = IntegerField(u'Perform B', validators=[NumberRange(0, 0), Optional()])
+    profession_a = IntegerField(u'Profession A', validators=[NumberRange(0, 0), Optional()])
+    profession_b = IntegerField(u'Profession B', validators=[NumberRange(0, 0), Optional()])
+    ride = IntegerField(u'Ride', validators=[NumberRange(0, 0), Optional()])
+    sense_motive = IntegerField(u'Sense Motive', validators=[NumberRange(0, 0), Optional()])
+    sleight_of_hand = IntegerField(u'Sleight of Hand', validators=[NumberRange(0, 0), Optional()])
+    spellcraft = IntegerField(u'Spellcraft', validators=[NumberRange(0, 0), Optional()])
+    stealth = IntegerField(u'Stealth', validators=[NumberRange(0, 0), Optional()])
+    survival = IntegerField(u'Survival', validators=[NumberRange(0, 0), Optional()])
+    swim = IntegerField(u'Swim', validators=[NumberRange(0, 0), Optional()])
+    use_magic_device = IntegerField(u'Use Magic Device', validators=[NumberRange(0, 0), Optional()])
 
 
 
 class WTF_Weapon(Form):
 
-    name = strf(u'Name')
-    attack_bonus = intf(u'Attack Bonus', validators=[validators.NumberRange(0, 0)])
-    critical = intf(u'Critical', validators=[validators.NumberRange(0, 0)])
-    dmg_type = intf(u'Damage Type', validators=[validators.NumberRange(0, 0)])
-    wpn_range = intf(u'Weapon Range', validators=[validators.NumberRange(0, 0)])
-    ammunition = intf(u'Ammunition', validators=[validators.NumberRange(0, 0)])
-    damage = strf(u'Damage')
+    name = StringField(u'Name')
+    attack_bonus = IntegerField(u'Attack Bonus', validators=[NumberRange(0, 0), Optional()])
+    critical = IntegerField(u'Critical', validators=[NumberRange(0, 0), Optional()])
+    dmg_type = IntegerField(u'Damage Type', validators=[NumberRange(0, 0), Optional()])
+    wpn_range = IntegerField(u'Weapon Range', validators=[NumberRange(0, 0), Optional()])
+    ammunition = IntegerField(u'Ammunition', validators=[NumberRange(0, 0), Optional()])
+    damage = StringField(u'Damage')
 
 
 
 class WTF_Armor(Form):
 
-    name = strf(u'Name')
-    bonus = intf(u'Bonus', validators=[validators.NumberRange(0, 0)])
-    armor_type = strf(u'Armor Type', validators=[validators.NumberRange(0, 0)])
-    check_penalty = intf(u'Check Penalty', validators=[validators.NumberRange(0, 0)])
-    spell_failure = intf(u'Spell Failure', validators=[validators.NumberRange(0, 0)])
-    weight = intf(u'Weight', validators=[validators.NumberRange(0, 0)])
-    properties = strf(u'Properties')
+    name = StringField(u'Name')
+    bonus = IntegerField(u'Bonus', validators=[NumberRange(0, 0), Optional()])
+    armor_type = StringField(u'Armor Type', validators=[NumberRange(0, 0), Optional()])
+    check_penalty = IntegerField(u'Check Penalty', validators=[NumberRange(0, 0), Optional()])
+    spell_failure = IntegerField(u'Spell Failure', validators=[NumberRange(0, 0), Optional()])
+    weight = IntegerField(u'Weight', validators=[NumberRange(0, 0), Optional()])
+    properties = StringField(u'Properties')
 
 
 
 class WTF_Item(Form):
 
-    item = strf(u'Item')
-    weight = intf(u'Weight', validators=[validators.NumberRange(0, 0)])
+    item = StringField(u'Item')
+    weight = IntegerField(u'Weight', validators=[NumberRange(0, 0), Optional()])
 
 
 class WTF_Charsheet(Form):

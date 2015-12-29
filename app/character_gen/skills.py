@@ -1,5 +1,5 @@
 class Skills():
-    def __init__(self, master):
+    def __init__(self):
         self.skills =  { 'acrobatics' : 0,
                     'appraise' : 0,
                     'bluff' : 0,

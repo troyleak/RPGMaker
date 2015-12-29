@@ -6,18 +6,20 @@ values
 Call set_attrib to change an individual parameter
 '''
 
+from . import ability_scores, attributes, classes, feats, gear, race, skills, spells
+
 class Character(): # TODO: Add feats
 
     def __init__(self):
 
-        self.ability_scores = None
-        self.race = None
-        self.char_class = None
-        self.skills = None
-        self.feats = None
-        self.spells = None
-        self.gear = None
-        self.attributes = None
+        self.ability_scores = ability_scores.Abilities()
+        self.race = attributes.Attributes()
+        self.char_class = classes.Char_Class()
+        self.skills = skills.Skills()
+        self.feats = feats.Feats()
+        self.spells = spells.Spells()
+        self.gear = gear.Gear()
+        self.attributes = attributes.Attributes()
 
         self.money = 0
         self.experience = 0

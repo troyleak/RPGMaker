@@ -5,7 +5,7 @@
 #   - Implement a modifier for character object to add feats and change stats
 
 class Feats():
-    def __init__():
+    def __init__(self):
         feats_list = []
 
     def dwarf():

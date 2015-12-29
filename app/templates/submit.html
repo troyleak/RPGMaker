@@ -15,22 +15,6 @@
       {% endfor %}
     </ul>
   </div>
-
-  <div class="panel-body">
-    <ul class="list-group container-fluid">
-      {% for title in form_data if title != 'submit' %}
-      <li class="list-group-item disabled text-capitalize"><h3>{{ title }}: </h3></li>
-
-        {% for item in form_data[title] %}
-          <li class="list-group-item text-capitalize">{{ item }}
-            <span class="badge text-capitalize">{{ form_data[title].get(item) }}</span>
-          </li>
-        {% endfor %}
-
-      {% endfor %}
-    </ul>
-  </div>
-
   <div class="panel-bottom">
     <a class="btn btn-primary" href="/form">Start Over</a>
   </div>

@@ -23,7 +23,7 @@ TODO: Determine if input validation is necessary. If so, do that
 
 class Weapon():
 
-    def __init__(self, master):
+    def __init__(self):
         self.weapon = { 'name':"" ,
                         'attack_bonus':0 ,
                         'critical':0 ,
@@ -46,7 +46,7 @@ class Weapon():
 
 class Armor():
 
-    def __init__(self, master):
+    def __init__(self):
         self.armor =  { 'name':"" ,
                         'armor_bonus':0 ,
                         'armor_type':"" ,
@@ -69,7 +69,7 @@ class Armor():
 
 class Item():
 
-    def __init__(self, master):
+    def __init__(self):
         self.item = {'name':"" ,
                      'weight':0,
                      'properties':"" }
@@ -84,7 +84,7 @@ class Item():
 
 class Gear():
     # gear is a container for the other itemtypes
-    def __init__(self, master):
+    def __init__(self):
         self.weapons = []
         self.armor = []
         self.gear = []
