@@ -13,7 +13,7 @@ class Character(): # TODO: Add feats
     def __init__(self):
 
         self.ability_scores = ability_scores.Abilities()
-        self.race = attributes.Attributes()
+        self.race = race.Race()
         self.char_class = classes.Char_Class()
         self.skills = skills.Skills()
         self.feats = feats.Feats()
@@ -24,6 +24,22 @@ class Character(): # TODO: Add feats
         self.money = 0
         self.experience = 0
 
+    def __iter__(self):
+        # Overrides iter to output the character class in a sensible way -- eventually
+        result = []
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(vars(ability_scores))
+        result.append(money)
+        result.append(experience)
+        return self
+
+
+    # should recreate this to change one class. Can be iterated over a list of classes to change them
     def create_char(self, ability_scores, attributes, char_class, feats, gear, race, skills, spells):
         self.ability_scores = ability_scores
         self.race = race

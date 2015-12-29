@@ -1,0 +1,7 @@
+TODO:
+  - override __iter__ for class Character
+  - race traits
+  - class traits
+  - Spells
+  - Feats
+  - Gear
