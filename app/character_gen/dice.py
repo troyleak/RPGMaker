@@ -23,11 +23,7 @@ class Dice():
 
     def drop_lowest(values):
         if len(values) <= 1:
-            print("1 or fewer values in the list")
             pass
         else:
             values.sort(reverse=True)
-            print("Sorted values before removal: " + str(values))
-            print(values.pop())
-            print("Sorted values after removal: " + str(values))
         return values

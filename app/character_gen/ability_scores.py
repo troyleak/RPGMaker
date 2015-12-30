@@ -75,7 +75,6 @@ class Abilities():
         lst = dice.Dice.roll_dice(6, 4)
         result = sum(dice.Dice.drop_lowest(lst))
         self.stat = result
-        print("setting " + str(stat) + " to " + str(result))
         return result
 
 

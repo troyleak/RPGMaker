@@ -9,14 +9,18 @@
   <div class="panel-body">
     <h2><p class="text-center">Your Character</p></h2>
     <ul class="list-group container-fluid">
-      <li class="list-group-item disabled"><h3>Character Ability Scores: </h3></li>
       {% for i in char.__dict__.keys() %}
-        <li class="list-group-item">{{ i }}<span class="badge">{{ char[i] }}</span></li>
+      <li class="list-group-item disabled text-capitalize"><h3>{{ i }}: </h3></li>
+
+        {% for j in char.i %}
+          <li class="list-group-item">{{ j }}<span class="badge">{{ j }}</span></li>
+        {% endfor %}
+
       {% endfor %}
     </ul>
-  </div>
-  <div class="panel-bottom">
-    <a class="btn btn-primary" href="/form">Start Over</a>
+    <div class="panel-bottom">
+      <a class="btn btn-primary" href="/form">Start Over</a>
+    </div>
   </div>
 </div>
 

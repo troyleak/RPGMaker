@@ -1,4 +1,6 @@
 TODO:
+  - !! submitted form data modifies Character class instance !!
+  - Output Character data in a sensible way - JSON
   - override __iter__ for class Character
   - race traits
   - class traits
