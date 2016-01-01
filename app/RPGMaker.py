@@ -24,9 +24,9 @@ Main program:
     I realize this is large in scope, most of the logic should already be
     implemented though
 
-    TODO:   Need to tie frontend and backend together. Most of the hard work should
-                already be done. Just have to have form submission update character
-                model based on validation results
+    TODO:   Need to tie frontend and backend together. Most of the hard work
+        should already be done. Just have to have form submission update
+        character model based on validation results
 
             Error catching - can be done in the individual classes
 
@@ -36,7 +36,7 @@ Main program:
 
 '''
 
-from flask import Flask, render_template, flash, redirect, url_for, session, request, Response
+from flask import *
 from flask_bootstrap import Bootstrap
 
 from character_gen import *
@@ -66,12 +66,12 @@ def form():
 
     if request.method == 'POST':
         if not form.validate():
-            flash('All fields are optional, you shouldn\'t even be seeing this message')
+            flash('Something went wrong, try again')
         else:
             responses = request.form
             session['submitted_form'] = responses
             app.logger.debug(responses)
-            # contains a list with tuples of the attributes and their entered values
+            # a list with tuples of the attributes and their entered values
             return redirect(url_for('submit'))
 
     return render_template('charsheet.html', form=form, char=char)
@@ -80,8 +80,8 @@ def form():
 @app.route("/submit", methods=('GET', 'POST'))
 def submit():
     form_data = session['submitted_form']
-    return render_template('submit.html', form=form, char=char, form_data=form_data)
-
+    return render_template(
+        'submit.html', form=form, char=char, form_data=form_data)
 
 
 if __name__ == "__main__":
