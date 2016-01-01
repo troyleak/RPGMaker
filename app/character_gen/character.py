@@ -4,10 +4,28 @@ from . import ability_scores, attributes, classes
 from . import feats, gear, race, skills, spells
 
 '''
-Default constructor creates empty values.
-Call set_attribs_rand method on Character object to populate with random
-values
-Call set_attrib to change an individual parameter
+This is the main class for the model of the character
+
+It contains the submitted values for a character after form submission.
+
+Of note are the functions to assign character values, and to return the
+    character object as JSON formatted data
+
+Before form submission, the object contains empty values. The subclasses are
+    also configured likewise (for ones in which that is possible).
+
+After form submission, blank values are randomized (within the bounds of
+    the other specified values). This means the system is 'lazy' in its
+    creating your character.
+
+After the character has been created, it is not possible to go back and alter
+    it. I recommend starting from scratch. It may be helpful to outline some
+    basic characteristics on paper before using this tool, as it is very much
+    in alpha stages and could explode at any moment.
+
+Because of the complexity involved in leveling up a character, the opposite is
+    low on my priorities compared to implementing things like feats and spells
+
 '''
 
 
@@ -35,7 +53,6 @@ class Character():  # TODO: Add feats
         # in the form of ('class-attrib', 'value')
         if stat in self.__dict__:
             self.stat = scores
-
         else:
             print("Error assigning stat " + stat)
         # TODO: Finish this - Need to screen stats
