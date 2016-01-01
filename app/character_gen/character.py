@@ -48,7 +48,7 @@ class Character():  # TODO: Add feats
         self.money = 0
         self.experience = 0
 
-    def assign_stats(self, stat, scores):
+    def assign_stat(self, stat, scores):
         # because of how the form is submitted, values come
         # in the form of ('class-attrib', 'value')
         if stat in self.__dict__:
@@ -69,7 +69,7 @@ class Character():  # TODO: Add feats
                 elif i in entry[0]:
                     print("Writing " + str(entry[1]) + " to " + str(entry[0]))
                     # i needs to be converted from weapons/armor/items to gear
-                    # self.assign_stats(i, entry[1])
+                    # self.assign_stat(entry[0], entry[1])
                     break
 
     def char_to_json(self):

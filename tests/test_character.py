@@ -3,6 +3,7 @@ import json
 
 from app.character_gen.character import *
 
+
 class TestCharacter(unittest.TestCase):
 
     def test_init_character(self):
