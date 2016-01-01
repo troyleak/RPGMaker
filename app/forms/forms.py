@@ -10,30 +10,30 @@ from wtforms import Form, StringField, IntegerField, FormField, SubmitField
 
 class WTF_Attributes(Form):
     name = StringField(u'Name')
-    level = IntegerField(u'Level', validators=[NumberRange(0, 0), Optional()])
+    level = IntegerField(u'Level', validators=[NumberRange(0, 20), Optional()])
     player = StringField(u'Player')
     gender = StringField(u'Gender')
     race = StringField(u'Race')
     size = StringField(u'Size')
     age = StringField(u'Age')
-    height = IntegerField(u'Height', validators=[NumberRange(0, 0), Optional()])
-    weight = IntegerField(u'Weight', validators=[NumberRange(0, 0), Optional()])
+    height = IntegerField(u'Height (cm)', validators=[NumberRange(0, 300), Optional()])
+    weight = IntegerField(u'Weight (kg)', validators=[NumberRange(0, 300), Optional()])
     hair = StringField(u'Hair')
     eyes = StringField(u'Eyes')
     alignment = StringField(u'Alignment')
     deity = StringField(u'Deity')
     homeland = StringField(u'Homeland')
-
+    char_class = StringField(u'Class')
 
 
 class WTF_Abilities(Form):
 
-    strength = IntegerField(u'Strength', validators=[NumberRange(0, 0), Optional()])
-    dexterity = IntegerField(u'Dexterity', validators=[NumberRange(0, 0), Optional()])
-    constitution = IntegerField(u'Constitution', validators=[NumberRange(0, 0), Optional()])
-    intelligence = IntegerField(u'Intelligence', validators=[NumberRange(0, 0), Optional()])
-    wisdom = IntegerField(u'Wisdom', validators=[NumberRange(0, 0), Optional()])
-    charisma = IntegerField(u'Charisma', validators=[NumberRange(0, 0), Optional()])
+    strength = IntegerField(u'Strength', validators=[NumberRange(0, 21), Optional()])
+    dexterity = IntegerField(u'Dexterity', validators=[NumberRange(0, 21), Optional()])
+    constitution = IntegerField(u'Constitution', validators=[NumberRange(0, 21), Optional()])
+    intelligence = IntegerField(u'Intelligence', validators=[NumberRange(0, 21), Optional()])
+    wisdom = IntegerField(u'Wisdom', validators=[NumberRange(0, 21), Optional()])
+    charisma = IntegerField(u'Charisma', validators=[NumberRange(0, 21), Optional()])
 
 
 

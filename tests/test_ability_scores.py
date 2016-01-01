@@ -12,7 +12,7 @@ class TestAbilityScores(unittest.TestCase):
         stat = "strength"
         result = Abilities.set_ability_stat_rand(self, stat)
         self.assertIsInstance(result, int)
-        self.assertIn(result, range(3, 19))
+        self.assertIn(result, range(3, 19)) # occasionally this value is being set too high
 
 
     def test_get_ability_scores(self):

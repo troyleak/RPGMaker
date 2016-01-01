@@ -5,14 +5,18 @@ Call set_attribs_rand method on Character object to populate with random
 values
 Call set_attrib to change an individual parameter
 '''
-import pickle
+import json
 from . import ability_scores, attributes, classes, feats, gear, race, skills, spells
 
 class Character(): # TODO: Add feats
 
     def __init__(self):
+        self.valid_form_field_values = [
+            'abilities','weapon','race','char_class','skills','gear',
+            'attributes','feats','spells','money','experience', 'armor']
 
-        self.ability_scores = ability_scores.Abilities()
+
+        self.abilities = ability_scores.Abilities()
         self.race = race.Race()
         self.char_class = classes.Char_Class()
         self.skills = skills.Skills()
@@ -23,39 +27,27 @@ class Character(): # TODO: Add feats
 
         self.money = 0
         self.experience = 0
-    #
-    # Not sure how to do this now, but:
-    #
-    # def __iter__(self):
-    #     # Overrides iter to output the character class in a sensible way
-    #     result = []
-    #
-    #     for _val_ in self.__dict__:
-    #         ## needs to check if _val_ is a member class or if it's a value
-    #         # if it's a value print it, otherwise defer to child obj __iter__
-    #         try:
-    #             _val_ = isinstance(_val_, str or int or list or dict or Abilities or Race or Char_Class or Skills or Feats or Spells or Gear or Attributes)
-    #         except TypeError:
-    #             print("Wrong type")
-    #         result.append(vars(self._val_.__dict__))
-    #
-    #     return result
 
-
-    # should recreate this to change one class. Can be iterated over a list of classes to change them
-    def create_char(self, ability_scores, attributes, char_class, feats, gear, race, skills, spells):
-        self.ability_scores = ability_scores
-        self.race = race
-        self.char_class = char_class
-        self.skills = skills
-        self.feats = feats
-        self.spells = spells
-        self.gear = gear
-        self.attributes = attributes
 
     def assign_stats(self, stat, scores):
+        if stat in self.__dict__:
+            self.stat = scores
+        else:
+            print("Error assigning stat " + stat)
         # TODO: Finish this
-        return self
 
-    def char_to_pickle(self):
-        return pickle.dumps(self)
+    def assign_stats_from_submitted_list(self, form_list):
+        json_char = self.char_to_json()
+        for entry in form_list:
+            for i in self.valid_form_field_values:
+                if entry[1] == (None or 0 or ''):
+                    print("No value input for " + entry[0])
+                    break
+                elif i in entry[0]:
+                    print( "Writing " + str(entry[1]) + " to character in " + str(entry[0])) # j represents the
+                    break
+
+
+    def char_to_json(self):
+        return json.dumps(self, default=lambda o: o.__dict__,
+            sort_keys=True, indent=4) # from https://stackoverflow.com/questions/3768895/python-how-to-make-a-class-json-serializable

@@ -64,8 +64,6 @@ def form():
 
     form = forms.WTF_Charsheet()
 
-    # Maybe need to make a superform and then iterate over it to access the subforms
-
     if request.method == 'POST':
         if not form.validate():
             flash('All fields are optional, you shouldn\'t even be seeing this message')
@@ -73,7 +71,7 @@ def form():
             responses = request.form
             session['submitted_form'] = responses
             app.logger.debug(responses)
-            # contains an ImmutableMultiDict with the attributes and their entered values
+            # contains a list with tuples of the attributes and their entered values
             return redirect(url_for('submit'))
 
     return render_template('charsheet.html', form=form, char=char)
