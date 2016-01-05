@@ -50,7 +50,7 @@ class Character():  # TODO: Add feats
 
     def assign_stat(self, stat, scores):
         # because of how the form is submitted, values come
-        # in the form of ('class-attrib', 'value')
+        # in the form of stat = class-attrib scores = value)
         if stat in self.__dict__:
             self.stat = scores
         else:
@@ -64,7 +64,8 @@ class Character():  # TODO: Add feats
 
                 if entry[1] == (None or 0 or ''):
                     print("No value input for " + entry[0])
-                    break
+                    break  # break the loop if no value in the field, sending
+                    # us to the next form field
 
                 elif i in entry[0]:
                     print("Writing " + str(entry[1]) + " to " + str(entry[0]))
