@@ -21,17 +21,12 @@ TODO: Determine if input validation is necessary. If so, do that
 
 '''
 
+
 class Weapon():
 
     def __init__(self):
-        self.weapon = { 'name':"" ,
-                        'attack_bonus':0 ,
-                        'critical':0 ,
-                        'dmg_type':0 ,
-                        'wpn_range':0 ,
-                        'ammunition':0 ,
-                        'damage':"" }
-        print("Created uninitialized Weapon item")
+        self.weapon = {'name': "", 'attack_bonus': 0, 'critical': 0,
+                'dmg_type': 0, 'wpn_range': 0, 'ammunition': 0, 'damage': ""}
 
     def make(self, name, attack_bonus, critical, dmg_type, wpn_range, ammunition, damage):
         self.name = name
@@ -47,13 +42,13 @@ class Weapon():
 class Armor():
 
     def __init__(self):
-        self.armor =  { 'name':"" ,
-                        'armor_bonus':0 ,
-                        'armor_type':"" ,
-                        'check_penalty':0 ,
-                        'spell_failure':0 ,
-                        'weight':0 ,
-                        'properties':"" }
+        self.armor = {'name': "",
+                        'armor_bonus': 0,
+                        'armor_type': "",
+                        'check_penalty': 0,
+                        'spell_failure': 0,
+                        'weight': 0,
+                        'properties': ""}
         print("Created uninitialized Armor item")
 
     def make(self, name, armor_bonus, armor_type, check_penalty, spell_failure, weight, properties):
@@ -70,9 +65,9 @@ class Armor():
 class Item():
 
     def __init__(self):
-        self.item = {'name':"" ,
-                     'weight':0,
-                     'properties':"" }
+        self.item = {'name': "",
+                     'weight': 0,
+                     'properties': ""}
         print("Created uninitialized item")
 
     def make(self, name, weight, properties):
@@ -87,15 +82,13 @@ class Gear():
     def __init__(self):
         self.weapons = []
         self.armor = []
-        self.gear = []
+        self.items = []
 
-    def add_weapon(self, weapon):
-        self.weapons += weapon
-
-
-    def add_armor(self, armor):
-        self.armor += armor
-
-
-    def add_item(self, item):
-        self.item += item
+    def add_gear(self, gear_type, gear):
+        print("Adding " + gear_type + " to gear list")
+        if gear_type == "weapon":
+            self.weapons.append(gear)
+        if gear_type == "armor":
+            self.armor.append(gear)
+        if gear_type == "item":
+            self.items.append(gear)

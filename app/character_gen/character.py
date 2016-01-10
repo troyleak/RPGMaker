@@ -69,6 +69,10 @@ class Character():  # TODO: Add feats
 
                 elif i in entry[0]:
                     print("Writing " + str(entry[1]) + " to " + str(entry[0]))
+                    for x in ["weapon", "armor", "item"]:
+                        if x in entry[0]:
+                            print(str(x) + " in entry")
+                            self.gear.add_gear(x, entry[1])
                     # i needs to be converted from weapons/armor/items to gear
                     # self.assign_stat(entry[0], entry[1])
                     break
