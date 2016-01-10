@@ -12,7 +12,10 @@ class TestCharacter(unittest.TestCase):
         self.assertIsInstance(player, Character)
 
     def test_char_to_json(self):
-        return self
+        player = Character()
+        self.assertIsInstance(player, Character)
+        player = player.char_to_json()
+        self.assertIsInstance(player, str)
 
     def test_assign_stats_from_submitted_list(self):
         test_list_from_form = [
@@ -29,13 +32,13 @@ class TestCharacter(unittest.TestCase):
             ('armor-properties', ''),
             ('armor-spell_failure', ''),
             ('armor-weight', ''),
-            ('attributes-age', ''),
+            ('attributes-age', '30'),
             ('attributes-alignment', ''),
             ('attributes-deity', ''),
-            ('attributes-eyes', ''),
-            ('attributes-gender', ''),
-            ('attributes-hair', ''),
-            ('attributes-height', ''),
+            ('attributes-eyes', 'blue'),
+            ('attributes-gender', 'male'),
+            ('attributes-hair', 'brown'),
+            ('attributes-height', '150'),
             ('attributes-homeland', ''),
             ('attributes-level', '5'),
             ('attributes-name', 'Gork'),

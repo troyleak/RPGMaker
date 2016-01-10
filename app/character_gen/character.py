@@ -54,7 +54,7 @@ class Character():  # TODO: Add feats
         if stat in self.__dict__:
             self.stat = scores
         else:
-            print("Error assigning stat " + stat)
+            print(stat + " does not exist in the character")
         # TODO: Finish this - Need to screen stats
 
     def assign_stats_from_submitted_list(self, form_list):
@@ -68,13 +68,13 @@ class Character():  # TODO: Add feats
                     # us to the next form field
 
                 elif i in entry[0]:
-                    print("Writing " + str(entry[1]) + " to " + str(entry[0]))
+                    print("Writing " + str(entry[1]) + " to " + str(i))
                     for x in ["weapon", "armor", "item"]:
                         if x in entry[0]:
-                            print(str(x) + " in entry")
+                            print(str(x) + " exists in entry")
                             self.gear.add_gear(x, entry[1])
-                    # i needs to be converted from weapons/armor/items to gear
-                    # self.assign_stat(entry[0], entry[1])
+                            break
+                    self.assign_stat(i, entry[1])
                     break
 
     def char_to_json(self):
