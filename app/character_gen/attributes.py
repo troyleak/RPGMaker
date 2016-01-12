@@ -6,27 +6,29 @@ Contains data structures pertaining to character's physical attributes.
 Also contains modifiers for base stats. This class will be used last after
 race, class, skills, feats, etc. have been selected
 
-self.options: contains a dict with the available options for each physical attribute
+self.options: contains a dict with the available options for each
+    physical attribute
 
 set_attrib takes an attribute and a value and modifies the character
     appropriately, if the desired attribute and option exist.
 '''
 
+
 class Attributes():
     def __init__(self):
         self.options = {
-            'gender' : ['male', 'female'],
-            'size' : ['large', 'medium', 'small'],
-            'age' : list(range(18, 400)),
-            'height' : list(range(100, 200)),
-            'weight' : list(range(150, 300)),
-            'hair' : ['red', 'orange', 'yellow', 'green', 'blue',
-                      'indigo', 'violet', 'black', 'white'],
-            'eyes' : ['red', 'orange', 'yellow', 'green', 'blue',
-                      'indigo', 'violet', 'black', 'white'],
-            'alignment' : [ 'chaotic_evil', 'chaotic_neutral', 'chaotic_good',
-                            'neutral_evil', 'neutral_neutral', 'neutral_good',
-                            'lawful_evil', 'lawful_neutral', 'lawful_good' ]
+            'gender': ['male', 'female'],
+            'size': ['large', 'medium', 'small'],
+            'age': list(range(18, 400)),
+            'height': list(range(100, 200)),
+            'weight': list(range(150, 300)),
+            'hair': ['red', 'orange', 'yellow', 'green', 'blue',
+                     'indigo', 'violet', 'black', 'white'],
+            'eyes': ['red', 'orange', 'yellow', 'green', 'blue',
+                     'indigo', 'violet', 'black', 'white'],
+            'alignment': ['chaotic_evil', 'chaotic_neutral', 'chaotic_good',
+                          'neutral_evil', 'neutral_neutral', 'neutral_good',
+                          'lawful_evil', 'lawful_neutral', 'lawful_good']
             }
 
         self.gender = 'none'
@@ -65,10 +67,8 @@ class Attributes():
         self.favored_hp = True
         self.build = 'Random'
 
-
-
     def set_attrib(self, attrib, value):
-    # takes an attribute and a value and sets the attrib to the passed val
+        # takes an attribute and a value and sets the attrib to the passed val
         try:
             self.attrib = value
         except ValueError:
@@ -80,9 +80,8 @@ class Attributes():
         # if attrib in self.__dict__ and value in self.options[attrib]:
         #     self.__dict__[attrib] = value
         # else:
-        #     print("Error modifying that attribute. Perhaps it doesn't exist?")
+        #     print("Error modifying that attribute")
         # print("test")
-
 
     def set_attribs_rand(self):
         # sets attributes randomly
