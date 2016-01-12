@@ -6,4 +6,5 @@ dependencies:
     - flask
     - flask-wtf
     - flask-bootstrap
+    - wtforms-json-0.2.10
     - unittest

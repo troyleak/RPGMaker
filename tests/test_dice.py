@@ -4,20 +4,17 @@ import random
 from app.character_gen.dice import Dice
 
 
-
 class TestDice(unittest.TestCase):
 
     def test_dice_spread(self):
         # test that the dice function returns statistically valid results
-        sides = [2, 3, 4, 6, 8, 10, 12, 20, 100]
+        valid_sides = [2, 3, 4, 6, 8, 10, 12, 20, 100]
         for rolls in range(1, 20):
-            for j in sides:
-                roll = sum(Dice.roll_dice(j, rolls))
-                lo = (rolls) # boundary if we rolled all 1s
-                hi = ((rolls * j) + 1)
+            for sides in valid_sides:
+                roll = sum(Dice.roll_dice(sides, rolls))
+                lo = (rolls)  # boundary if we rolled all 1s
+                hi = ((rolls * sides) + 1)  # ceiling for upper range
                 self.assertIn(roll, range(lo, hi))
-
-
 
     def test_dice_drop_lowest(self):
         random.seed()

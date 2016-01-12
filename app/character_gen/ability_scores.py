@@ -43,8 +43,10 @@ class Abilities():
         # Sets the specified stat to a random value
         # using the roll 4 drop 1 method
         lst = dice.Dice.roll_dice(6, 4)
+        print(lst)
         result = sum(dice.Dice.drop_lowest(lst))
-        self.stat = result
+        print(result)
+        self.stats[stat] = result
         return result
 
     def set_ability_mod(self, stat):
@@ -56,9 +58,10 @@ class Abilities():
         return modifier
 
     def get_ability_scores(self):
-        return [self.strength, self.dexterity, self.constitution,
-                self.intelligence, self.wisdom, self.charisma]
+        return self.stats
 
     def get_ability_mods(self):
-        return [self.strength_mod, self.dexterity_mod, self.constitution_mod,
-                self.intelligence_mod, self.wisdom_mod, self.charisma_mod]
+        return self.mods
+
+    def get_saving_throws(self):
+        return [self.fortitude, self.reflex, self.will]

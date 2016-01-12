@@ -38,6 +38,8 @@ Main program:
 
 from flask import *
 from flask_bootstrap import Bootstrap
+import wtforms_json
+import json
 
 from character_gen import *
 from secrets import *
@@ -47,6 +49,7 @@ from forms import *
 
 app = Flask(__name__)
 app.secret_key = SECRET_KEY
+wtforms_json.init()
 # app.config.from_object('secrets')
 
 Bootstrap(app)
@@ -62,7 +65,7 @@ def entry():
 @app.route("/form", methods=('GET', 'POST'))
 def form():
 
-    form = forms.WTF_Charsheet()
+    form = forms.WTF_Charsheet.from_json(json.loads(char.to_json()))
 
     if request.method == 'POST':
         if not form.validate():

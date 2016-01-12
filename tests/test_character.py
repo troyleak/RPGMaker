@@ -14,7 +14,7 @@ class TestCharacter(unittest.TestCase):
     def test_char_to_json(self):
         player = Character()
         self.assertIsInstance(player, Character)
-        player = player.char_to_json()
+        player = player.to_json()
         self.assertIsInstance(player, str)
 
     def test_assign_stats_from_submitted_list(self):

@@ -77,7 +77,7 @@ class Character():  # TODO: Add feats
                     self.assign_stat(i, entry[1])
                     break
 
-    def char_to_json(self):
+    def to_json(self):
         return json.dumps(
             self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 # https://stackoverflow.com/questions/3768895/python-how-to-make-a-class-json-serializable
