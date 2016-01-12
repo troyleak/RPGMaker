@@ -12,7 +12,6 @@ class TestAbilityScores(unittest.TestCase):
     def test_set_ability_stat_rand(self):
         test_object = Abilities()
         test_object.set_ability_stat_rand("strength")
-        # occasionally this value is being set too high
         self.assertIn(test_object.stats["strength"], range(3, 19))
 
     def test_get_ability_scores(self):
@@ -36,7 +35,7 @@ class TestAbilityScores(unittest.TestCase):
         ability_scores = Abilities()
         scores = {
             'strength': 18, 'dexterity': 18, 'constitution': 18,
-            'intelligence': 18, 'wisdom': 18, 'charisma': 18, }
+            'intelligence': 18, 'wisdom': 18, 'charisma': 18}
         ability_scores.set_ability_scores(scores)
         self.assertIs(ability_scores.stats['strength'], 18)
 
