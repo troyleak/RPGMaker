@@ -19,11 +19,14 @@ update_stats modifies the parent character with the appropriate stats
 #                 "charisma":0 }
 
 # TODO: Fix this vvv
-def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
+
+
+def update_stats(self, master, stats):
+    # str, dex, con, int, wis, cha
     # Modifies the parent object with new stats based on the race
     for i, j in stats:
         master.i.stat += j
-        master.i.mod += (int(j/2.0)) # For every two points, add a modifier
+        master.i.mod += (int(j/2.0))  # For every two points, add a modifier
 
 # Caps:             # lowercase:
 #                   #
@@ -35,42 +38,58 @@ def update_stats( self, master, stats ): # str, dex, con, int, wis, cha
 # Halfling          # halfling
 # Human             # human
 
+
 class Race():
     def __init__(self):
-        self.options = ['dwarf', 'halfling', 'elf', 'human', 'gnome', 'half-orc', 'half-elf']
+        self.options = [
+            'dwarf', 'halfling', 'elf', 'human',
+            'gnome', 'half-orc', 'half-elf']
         self.race = 'none'
-        self.traits =  {'':''}
+        self.traits = {'': ''}
         self.languages = []
-        self.stats_list =  {"":0}
-        self.example_names =   {'male':[], 'female':[] }
+        self.stats_list = {"": 0}
+        self.example_names = {'male': [], 'female': []}
 
 
 class Dwarf(Race):
     def __init__(self, master):
         # TODO: Traits description (Possibly defined in feats)
-        self.traits =  {"Slow and Steady":"",
-                        "Darkvision":"",
-                        "Defensive Training":"",
-                        "Greed":"",
-                        "Hatred":"",
-                        "Hardy":"",
-                        "Stability":"",
-                        "Stonecunning":"",
-                        "Weapon Familiarity":"" }
+        self.traits = {
+            "Slow and Steady": "",
+            "Darkvision": "",
+            "Defensive Training": "",
+            "Greed": "",
+            "Hatred": "",
+            "Hardy": "",
+            "Stability": "",
+            "Stonecunning": "",
+            "Weapon Familiarity": ""}
 
-        self.languages = ["Common","Dwarven"]
+        self.languages = ["Common", "Dwarven"]
 
-        self.stats_list =  {"strength":0,
-                            "dexterity":0,
-                            "constitution":2,
-                            "intelligence":0,
-                            "wisdom":2,
-                            "charisma":(-2) }
+        self.stats_list = {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 2,
+            "intelligence": 0,
+            "wisdom": 2,
+            "charisma": (-2)}
 
-        self.example_names =   {'male':["Dolgrin", "Grunyar", "Harsk", "Kazmuk", "Morgrym", "Rogar"],
-                             'female':["Agna", "Bodill", "Ingra", "Kotri", "Rusilka", "Yangrit"] }
-
-
+        self.example_names = {
+            'male': [
+                "Dolgrin",
+                "Grunyar",
+                "Harsk",
+                "Kazmuk",
+                "Morgrym",
+                "Rogar"],
+            'female': [
+                "Agna",
+                "Bodill",
+                "Ingra",
+                "Kotri",
+                "Rusilka",
+                "Yangrit"]}
 
     def make_dwarf(self, master):
         self.update_stats(master, self.stats_list)
@@ -84,24 +103,44 @@ class Dwarf(Race):
 
 class Elf(Race):
     def __init__(self, master):
-        self.traits =  {"Normal Speed":"",
-                        "Low-Light Vision":"",
-                        "Elven Immunities":"",
-                        "Elven Magic":"",
-                        "Keen Senses":"",
-                        "Weapon Familiarity":"" }
+        self.traits = {
+            "Normal Speed": "",
+            "Low-Light Vision": "",
+            "Elven Immunities": "",
+            "Elven Magic": "",
+            "Keen Senses": "",
+            "Weapon Familiarity": ""}
 
-        self.languages = ["Common","Elvish"]
+        self.languages = ["Common", "Elvish"]
 
-        self.stats_list =  {"strength":2,
-                            "dexterity":2,
-                            "constitution":(-2),
-                            "intelligence":0,
-                            "wisdom":0,
-                            "charisma":0 }
+        self.stats_list = {
+            "strength": 2,
+            "dexterity": 2,
+            "constitution": (-2),
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0}
 
-        self.example_names =   {'male':["Caladrel", "Heldadel", "Lanliss", "Meirdrarel", "Seldlon", "Talathel", "Variel", "Zordlon"],
-                             'female':["Amrunelara", "Dardlara", "Faunra", "Jathal", "Merisiel", "Oparal", "Soumral", "Tessara", "Yalandlara"] }
+        self.example_names = {
+            'male': [
+                "Caladrel",
+                "Heldadel",
+                "Lanliss",
+                "Meirdrarel",
+                "Seldlon",
+                "Talathel",
+                "Variel",
+                "Zordlon"],
+            'female': [
+                "Amrunelara",
+                "Dardlara",
+                "Faunra",
+                "Jathal",
+                "Merisiel",
+                "Oparal",
+                "Soumral",
+                "Tessara",
+                "Yalandlara"]}
 
     def make_elf(self, master):
         self.update_stats(master, self.stats_list)
@@ -112,27 +151,45 @@ class Elf(Race):
 
 class Gnome(Race):
     def __init__(self, master):
-        self.traits =  {"Slow Speed":"",
-                        "Low-Light Vision":"",
-                        "Defensive Training":"",
-                        "Gnome Magic":"",
-                        "Hatred":"",
-                        "Illusion Resistance":"",
-                        "Keen Senses":"",
-                        "Obsessive":"",
-                        "Weapon Familiarity":"" }
+        self.traits = {
+            "Slow Speed": "",
+            "Low-Light Vision": "",
+            "Defensive Training": "",
+            "Gnome Magic": "",
+            "Hatred": "",
+            "Illusion Resistance": "",
+            "Keen Senses": "",
+            "Obsessive": "",
+            "Weapon Familiarity": ""}
 
-        self.languages = ["Common","Gnome", "Sylvan"]
+        self.languages = ["Common", "Gnome", "Sylvan"]
 
-        self.stats_list =  {"strength":(-2),
-                            "dexterity":2,
-                            "constitution":2,
-                            "intelligence":0,
-                            "wisdom":0,
-                            "charisma":2 }
+        self.stats_list = {
+            "strength": (-2),
+            "dexterity": 2,
+            "constitution": 2,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 2}
 
-        self.example_names = {  'male':["Abroshtor", "Bastargre", "Halungalom", "Krolmnite", "Poshment", "Zarzuket", "Zatqualmie"],
-                                'female':["Besh", "Fijit", "Lini", "Neji", "Majet", "Pai", "Queck", "Trig"] }
+        self.example_names = {
+            'male': [
+                "Abroshtor",
+                "Bastargre",
+                "Halungalom",
+                "Krolmnite",
+                "Poshment",
+                "Zarzuket",
+                "Zatqualmie"],
+            'female': [
+                "Besh",
+                "Fijit",
+                "Lini",
+                "Neji",
+                "Majet",
+                "Pai",
+                "Queck",
+                "Trig"]}
 
     def make_gnome(self, master):
         self.update_stats(master, self.stats_list)
@@ -143,27 +200,46 @@ class Gnome(Race):
 
 class Half_elf(Race):
     def __init__(self, master):
-        self.traits =  {"Normal Speed":"",
-                        "Low-Light Vision":"",
-                        "Adaptability":"",
-                        "Elf Blood":"",
-                        "Elven Immunities":"",
-                        "Keen Senses":"",
-                        "Multitalented":"" }
+        self.traits = {
+            "Normal Speed": "",
+            "Low-Light Vision": "",
+            "Adaptability": "",
+            "Elf Blood": "",
+            "Elven Immunities": "",
+            "Keen Senses": "",
+            "Multitalented": ""}
 
-        self.languages = ["Common","Elvish"]
+        self.languages = ["Common", "Elvish"]
 
 # TODO: Implement +2 bonus of user choice at character creation
-        self.stats_list =  {"strength":0,
-                            "dexterity":0,
-                            "constitution":0,
-                            "intelligence":0,
-                            "wisdom":0,
-                            "charisma":2 }
+        self.stats_list = {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 2}
 # Calathes, Encinal, Kyras, Narciso, Quiray, Satinder, Seltyiel, Zirul
 # Cathran, Elsbeth, Iandoli, Kieyanna, Lialda, Maddela, Reda, Tamarie
-        self.example_names =   {'male':["Calathes", "Encinal", "Kyras", "Narciso", "Quiray", "Satinder", "Seltyiel", "Zirul"],
-                             'female':["Cathran", "Elsbeth", "Iandoli", "Kieyanna", "Lialda", "Maddela", "Reda", "Tamarie"] }
+        self.example_names = {
+            'male': [
+                "Calathes",
+                "Encinal",
+                "Kyras",
+                "Narciso",
+                "Quiray",
+                "Satinder",
+                "Seltyiel",
+                "Zirul"],
+            'female': [
+                "Cathran",
+                "Elsbeth",
+                "Iandoli",
+                "Kieyanna",
+                "Lialda",
+                "Maddela",
+                "Reda",
+                "Tamarie"]}
 
     def choose_stat():
 
@@ -178,24 +254,44 @@ class Half_elf(Race):
 
 class Half_orc(Race):
     def __init__(self, master):
-        self.traits =  {"Normal Speed":"",
-                        "Low-Light Vision":"",
-                        "Elven Immunities":"",
-                        "Elven Magic":"",
-                        "Keen Senses":"",
-                        "Weapon Familiarity":"" }
+        self.traits = {
+            "Normal Speed": "",
+            "Low-Light Vision": "",
+            "Elven Immunities": "",
+            "Elven Magic": "",
+            "Keen Senses": "",
+            "Weapon Familiarity": ""}
 
-        self.languages = ["Common","Elvish"]
+        self.languages = ["Common", "Elvish"]
 # TODO: Implement choosing +2 at character creation
-        self.stats_list =  {"strength":2,
-                            "dexterity":0,
-                            "constitution":0,
-                            "intelligence":0,
-                            "wisdom":0,
-                            "charisma":0 }
+        self.stats_list = {
+            "strength": 2,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 0}
 
-        self.example_names =   {'male':["Caladrel", "Heldadel", "Lanliss", "Meirdrarel", "Seldlon", "Talathel", "Variel", "Zordlon"],
-                             'female':["Amrunelara", "Dardlara", "Faunra", "Jathal", "Merisiel", "Oparal", "Soumral", "Tessara", "Yalandlara"] }
+        self.example_names = {
+            'male': [
+                "Caladrel",
+                "Heldadel",
+                "Lanliss",
+                "Meirdrarel",
+                "Seldlon",
+                "Talathel",
+                "Variel",
+                "Zordlon"],
+            'female': [
+                "Amrunelara",
+                "Dardlara",
+                "Faunra",
+                "Jathal",
+                "Merisiel",
+                "Oparal",
+                "Soumral",
+                "Tessara",
+                "Yalandlara"]}
 
     def make_half_orc(self, master):
         self.update_stats(master, self.stats_list)
@@ -206,24 +302,44 @@ class Half_orc(Race):
 
 class Halfling(Race):
     def __init__(self, master):
-        self.traits =  {"Slow Speed":"",
-                        "Fearless":"",
-                        "Halfling Luck":"",
-                        "Sure Footed":"",
-                        "Keen Senses":"",
-                        "Weapon Familiarity":"" }
+        self.traits = {
+            "Slow Speed": "",
+            "Fearless": "",
+            "Halfling Luck": "",
+            "Sure Footed": "",
+            "Keen Senses": "",
+            "Weapon Familiarity": ""}
 
-        self.languages = ["Common","Halfling"]
+        self.languages = ["Common", "Halfling"]
 
-        self.stats_list =  {"strength":(-2),
-                            "dexterity":2,
-                            "constitution":0,
-                            "intelligence":0,
-                            "wisdom":0,
-                            "charisma":2 }
+        self.stats_list = {
+            "strength": (-2),
+            "dexterity": 2,
+            "constitution": 0,
+            "intelligence": 0,
+            "wisdom": 0,
+            "charisma": 2}
 
-        self.example_names =   {'male':["Antal", "Boram", "Evan", "Jamir", "Kaleb", "Lem", "Miro", "Sumak"],
-                             'female':["Anafa", "Bellis", "Etune", "Filiu", "Lissa", "Marra", "Rillka", "Sistra", "Yamyra"] }
+        self.example_names = {
+            'male': [
+                "Antal",
+                "Boram",
+                "Evan",
+                "Jamir",
+                "Kaleb",
+                "Lem",
+                "Miro",
+                "Sumak"],
+            'female': [
+                "Anafa",
+                "Bellis",
+                "Etune",
+                "Filiu",
+                "Lissa",
+                "Marra",
+                "Rillka",
+                "Sistra",
+                "Yamyra"]}
 
     def make_halfling(self, master):
         self.update_stats(master, self.stats_list)
@@ -234,21 +350,41 @@ class Halfling(Race):
 
 class Human(Race):
     def __init__(self, master):
-        self.traits =  {"Normal Speed":"",
-                        "Bonus Feat":"",
-                        "Skilled":""}
+        self.traits = {
+            "Normal Speed": "",
+            "Bonus Feat": "",
+            "Skilled": ""}
 
         self.languages = ["Common"]
 # TODO: Implement choosing +2 at character creation
-        self.stats_list =  {"strength":0,
-                            "dexterity":0,
-                            "constitution":0,
-                            "intelligence":2,
-                            "wisdom":0,
-                            "charisma":0 }
+        self.stats_list = {
+            "strength": 0,
+            "dexterity": 0,
+            "constitution": 0,
+            "intelligence": 2,
+            "wisdom": 0,
+            "charisma": 0}
 
-        self.example_names =   {'male':["Caladrel", "Heldadel", "Lanliss", "Meirdrarel", "Seldlon", "Talathel", "Variel", "Zordlon"],
-                             'female':["Amrunelara", "Dardlara", "Faunra", "Jathal", "Merisiel", "Oparal", "Soumral", "Tessara", "Yalandlara"] }
+        self.example_names = {
+            'male': [
+                "Caladrel",
+                "Heldadel",
+                "Lanliss",
+                "Meirdrarel",
+                "Seldlon",
+                "Talathel",
+                "Variel",
+                "Zordlon"],
+            'female': [
+                "Amrunelara",
+                "Dardlara",
+                "Faunra",
+                "Jathal",
+                "Merisiel",
+                "Oparal",
+                "Soumral",
+                "Tessara",
+                "Yalandlara"]}
 
     def make_human(self, master):
         self.update_stats(master, self.stats_list)

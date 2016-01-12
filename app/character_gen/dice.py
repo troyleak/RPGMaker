@@ -1,11 +1,10 @@
 import random
 
+
 class Dice():
 
     def __init__(self):
         pass
-
-
 
     def roll_dice(sides, dice):
         # returns a list of the outcome of the specified number of die rolls
@@ -18,8 +17,6 @@ class Dice():
             result.append(random.randrange(1, sides+1))
 
         return result
-
-
 
     def drop_lowest(values):
         if len(values) <= 1:

@@ -6,23 +6,25 @@ Contains class logic. I expect this one to be quite fun
 For now skills and stats will be modified. Feats may come later
 
 '''
+
+
 class Char_Class():
     def __init__(self):
         self.class_skill_list = []
         self.hit_die = []
         self.skill_ranks_per_lvl = []
-        self.level_stats = {'base_attack_bonus':'', 'fort':'', 'ref':'', 'will':'', }
-        return
+        self.level_stats = {'base_attack_bonus': '',
+                            'fortitude': '', 'reflex': '', 'will': ''}
 
     def get_bab_mod(mod):
         # Modulates based on number of levels between upgrades
         def calc_bab(level):
-            # Takes a level, returns a list of Base Attack Bonuses for that level
+            # Takes a level, returns a list of Base Attack Bonuses for it
             value = [level]
 
             while (level > 0):
                 value.append(level)
-                level -= mod # tBreaks loop before appending if level < 5
+                level -= mod  # Breaks loop before appending if level < 5
             return level
         return calc_bab
 
@@ -36,22 +38,21 @@ class Char_Class():
         valid_saves = list('fort', 'ref', 'will')
 
         def calc_save(save, level):
-            if not save in valid_saves:
+            if save not in valid_saves:
                 print("Error, not a save value")
                 return 0
             else:
                 result = {}
-                for i in xrange(1,4):
-                    result.append(dict(valid_saves[i], int((level / my_mod[i]) + my_bonus[i])) )
+                for i in xrange(1, 4):
+                    my_dict = dict(valid_saves[i], int((level / my_mod[i]) + my_bonus[i]))
+                    result.append(my_dict)
                 return result
-        return calc_save # now you can get some closure
-
+        return calc_save  # now you can get some closure
 
     def get_spells_mod(my_mod):
         def calc_mod(my_mod):
             return
         return calc_mod
-
 
 
 class Barbarian(Char_Class):
@@ -60,7 +61,7 @@ class Barbarian(Char_Class):
         self.class_skill_list = [
             "Acrobatics", "Climb", "Craft",
             "Handle Animal", "Intimidate", "Knowledge: Nature",
-            "Perception", "Ride", "Survival", "Swim" ]
+            "Perception", "Ride", "Survival", "Swim"]
 
         self.hit_die = [2, 10]
         self.save_mods = Char_Class.get_save_mod((2.0, 3.0, 4.0), (2, 0, 0))
@@ -90,7 +91,7 @@ class Barbarian(Char_Class):
 
         while (level > 0):
             value.append(level)
-            level -= 5 # tBreaks loop before appending if level < 5
+            level -= 5  # Breaks loop before appending if level < 5
         return level
 
     def make(character):
@@ -100,14 +101,15 @@ class Barbarian(Char_Class):
 
 class Bard(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy",
-                                 "Disguise", "Escape Artist", "Intimidate", "Knowledge: Arcana",
-                                 "Knowledge: Dungeoneering", "Knowledge: Engineering",
-                                 "Knowledge: Geography", "Knowledge: History", "Knowledge: Local",
-                                 "Knowledge: Nature", "Knowledge: Nobility", "Knowledge: Planes",
-                                 "Knowledge: Religion", "Linguistics", "Perception", "Perform",
-                                 "Profession", "Sense Motive", "Sleight of Hand", "Spellcraft",
-                                 "Stealth", "Use Magic Device"]
+        self.class_skill_list = [
+            "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy",
+            "Disguise", "Escape Artist", "Intimidate", "Knowledge: Arcana",
+            "Knowledge: Dungeoneering", "Knowledge: Engineering",
+            "Knowledge: Geography", "Knowledge: History", "Knowledge: Local",
+            "Knowledge: Nature", "Knowledge: Nobility", "Knowledge: Planes",
+            "Knowledge: Religion", "Linguistics", "Perception", "Perform",
+            "Profession", "Sense Motive", "Sleight of Hand", "Spellcraft",
+            "Stealth", "Use Magic Device"]
 
     def make(self, character):
         character.class_skills = self.class_skill_list
@@ -116,10 +118,11 @@ class Bard(Char_Class):
 
 class Cleric(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Appraise", "Craft", "Diplomacy", "Heal", "Knowledge: Arcana",
-                                 "Knowledge: History", "Knowledge: Nobility", "Knowledge: Planes",
-                                 "Knowledge: Religion", "Linguistics", "Profession", "Sense Motive",
-                                 "Spellcraft"]
+        self.class_skill_list = [
+            "Appraise", "Craft", "Diplomacy", "Heal", "Knowledge: Arcana",
+            "Knowledge: History", "Knowledge: Nobility", "Knowledge: Planes",
+            "Knowledge: Religion", "Linguistics", "Profession", "Sense Motive",
+            "Spellcraft"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -128,9 +131,11 @@ class Cleric(Char_Class):
 
 class Druid(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Climb", "Craft", "Fly", "Handle Animal", "Heal", "Knowledge: Geography",
-                                 "Knowledge: Nature", "Perception", "Profession", "Ride", "Spellcraft",
-                                 "Survival", "Swim"]
+        self.class_skill_list = [
+            "Climb", "Craft", "Fly", "Handle Animal", "Heal",
+            "Knowledge: Geography", "Knowledge: Nature",
+            "Perception", "Profession", "Ride", "Spellcraft",
+            "Survival", "Swim"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -139,8 +144,10 @@ class Druid(Char_Class):
 
 class Fighter(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Climb", "Craft", "Handle Animal", "Intimidate", "Knowledge: Dungeoneering",
-                                 "Knowledge: Engineering", "Profession", "Ride", "Survival", "Swim"]
+        self.class_skill_list = [
+            "Climb", "Craft", "Handle Animal", "Intimidate",
+            "Knowledge: Dungeoneering", "Knowledge: Engineering", "Profession",
+            "Ride", "Survival", "Swim"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -149,9 +156,11 @@ class Fighter(Char_Class):
 
 class Monk(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate",
-                                 "Knowledge: History", "Knowledge: Religion", "Perception", "Perform",
-                                 "Profession", "Ride", "Sense Motive", "Stealth", "Swim"]
+        self.class_skill_list = [
+            "Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate",
+            "Knowledge: History", "Knowledge: Religion", "Perception",
+            "Perform", "Profession", "Ride", "Sense Motive",
+            "Stealth", "Swim"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -160,9 +169,10 @@ class Monk(Char_Class):
 
 class Paladin(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Craft", "Diplomacy", "Handle Animal", "Heal", "Knowledge: Nobility",
-                                 "Knowledge: Religion", "Profession", "Ride", "Sense Motive",
-                                 "Spellcraft"]
+        self.class_skill_list = [
+            "Craft", "Diplomacy", "Handle Animal", "Heal",
+            "Knowledge: Nobility", "Knowledge: Religion",
+            "Profession", "Ride", "Sense Motive", "Spellcraft"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -171,10 +181,11 @@ class Paladin(Char_Class):
 
 class Ranger(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Climb", "Craft", "Handle Animal", "Heal", "Heal", "Intimidate",
-                                 "Knowledge: Dungeoneering", "Knowledge: Geography",
-                                 "Knowledge: Nature", "Perception", "Profession", "Ride",
-                                 "Spellcraft", "Stealth", "Survival", "Swim"]
+        self.class_skill_list = [
+            "Climb", "Craft", "Handle Animal", "Heal", "Heal", "Intimidate",
+            "Knowledge: Dungeoneering", "Knowledge: Geography",
+            "Knowledge: Nature", "Perception", "Profession", "Ride",
+            "Spellcraft", "Stealth", "Survival", "Swim"]
 
     def make(character):
         character.class_skills = self.class_skill_list
@@ -183,31 +194,39 @@ class Ranger(Char_Class):
 
 class Rogue(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy",
-                                 "Disable Device", "Disguise", "Escape Artist", "Intimidate",
-                                 "Knowledge: Dungeoneering", "Knowledge: Local",
-                                 "Linguistics", "Perception", "Perform",
-                                 "Profession", "Sense Motive", "Sleight of Hand", "Stealth",
-                                 "Swim", "Use Magic Device"]
+        self.class_skill_list = [
+            "Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy",
+            "Disable Device", "Disguise", "Escape Artist", "Intimidate",
+            "Knowledge: Dungeoneering", "Knowledge: Local",
+            "Linguistics", "Perception", "Perform",
+            "Profession", "Sense Motive", "Sleight of Hand", "Stealth",
+            "Swim", "Use Magic Device"]
+
     def make(character):
         character.class_skills = self.class_skill_list
         print("test")
+
 
 class Sorcerer(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Appraise", "Bluff", "Craft", "Fly", "Intimidate",
-                                 "Knowledge: Arcana", "Profession", "Spellcraft", "Use Magic Device"]
+        self.class_skill_list = [
+            "Appraise", "Bluff", "Craft", "Fly", "Intimidate",
+            "Knowledge: Arcana", "Profession", "Spellcraft",
+            "Use Magic Device"]
+
     def make(character):
         character.class_skills = self.class_skill_list
         print("test")
 
+
 class Wizard(Char_Class):
     def __init__(self, master):
-        self.class_skill_list = ["Appraise", "Craft", "Fly", "Knowledge: Arcana",
-                                 "Knowledge: Dungeoneering", "Knowledge: Engineering",
-                                 "Knowledge: Geography", "Knowledge: History", "Knowledge: Local",
-                                 "Knowledge: Nature", "Knowledge: Nobility", "Knowledge: Planes",
-                                 "Knowledge: Religion", "Linguistics", "Profession", "Spellcraft"]
+        self.class_skill_list = [
+            "Appraise", "Craft", "Fly", "Knowledge: Arcana",
+            "Knowledge: Dungeoneering", "Knowledge: Engineering",
+            "Knowledge: Geography", "Knowledge: History", "Knowledge: Local",
+            "Knowledge: Nature", "Knowledge: Nobility", "Knowledge: Planes",
+            "Knowledge: Religion", "Linguistics", "Profession", "Spellcraft"]
 
     def make(character):
         character.class_skills = self.class_skill_list
