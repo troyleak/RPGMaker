@@ -34,7 +34,7 @@ class Character():  # TODO: Add feats
     def __init__(self):
         self.valid_form_field_values = [
             'abilities', 'weapon', 'race', 'char_class', 'skills', 'gear',
-            'attributes', 'feats', 'spells', 'money', 'experience', 'armor']
+            'attributes', 'feats', 'spells', 'money', 'experience', 'armor', 'item']
 
         self.abilities = ability_scores.Abilities()
         self.race = race.Race()
@@ -52,7 +52,9 @@ class Character():  # TODO: Add feats
         # because of how the form is submitted, values come
         # in the form of stat = class-attrib scores = value)
         if stat in self.__dict__:
-            self.stat = scores
+            self.stat = scores  # TODO fix this - assignation is more compex
+        elif stat in ['weapon', 'armor', 'item']:
+            self.gear.stat = scores  # TODO pretty sure this doesn't work
         else:
             print(stat + " does not exist in the character")
         # TODO: Finish this - Need to screen stats
@@ -63,7 +65,6 @@ class Character():  # TODO: Add feats
             for i in self.valid_form_field_values:
 
                 if entry[1] == (None or 0 or ''):
-                    print("No value input for " + entry[0])
                     break  # break the loop if no value in the field, sending
                     # us to the next form field
 

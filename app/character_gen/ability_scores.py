@@ -4,21 +4,12 @@ from . import dice
 '''
 Abilities
 
-This class contains values pertaining to ability scores.
-It defines an Ability namedtuple containing the stat and modifier
-
-To change the stats, you'll need to replace the existing namedtuple object with
-a new one. Maybe that will change later
-
 '''
 
 
 class Abilities():
 
     def __init__(self):
-
-        self.valid_stats = ['strength', 'dexterity', 'constitution',
-                            'intelligence', 'wisdom', 'charisma']
 
         self.stats = {'strength': 10, 'dexterity': 10, 'constitution': 10,
                       'intelligence': 10, 'wisdom': 10, 'charisma': 10}
@@ -33,7 +24,7 @@ class Abilities():
 
     def set_ability_scores(self, labeled_stats_to_assign):
         # takes a dict of stats to assign and their values
-        for i in self.valid_stats:
+        for i in self.stats.keys():
             try:
                 self.stats[i] = labeled_stats_to_assign[i]
             except:
@@ -43,11 +34,10 @@ class Abilities():
         # Sets the specified stat to a random value
         # using the roll 4 drop 1 method
         lst = dice.Dice.roll_dice(6, 4)
-        print(lst)
+        print(str(lst))
         result = sum(dice.Dice.drop_lowest(lst))
-        print(result)
+        print(str(result))
         self.stats[stat] = result
-        return result
 
     def set_ability_mod(self, stat):
         # returns the ability modifier for a given stat
@@ -55,7 +45,6 @@ class Abilities():
             modifier = (stat - 10) / 2
         elif stat < 10:
             modifier = (11 - stat) / 2 * -1
-        return modifier
 
     def get_ability_scores(self):
         return self.stats
