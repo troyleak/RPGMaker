@@ -33,8 +33,9 @@ class Character():  # TODO: Add feats
 
     def __init__(self):
         self.valid_form_field_values = [
-            'abilities', 'weapon', 'race', 'char_class', 'skills', 'gear',
-            'attributes', 'feats', 'spells', 'money', 'experience', 'armor', 'item']
+            'abilities', 'weapon', 'race', 'char_class',
+            'skills', 'gear', 'attributes', 'feats', 'spells', 'money',
+            'experience', 'armor', 'item']
 
         self.abilities = ability_scores.Abilities()
         self.race = race.Race()
