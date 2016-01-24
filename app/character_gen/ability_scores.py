@@ -50,7 +50,7 @@ class Abilities():
             stat = (stat - 10) / 2
         elif stat < 10:
             stat = (11 - stat) / 2 * -1
-        return stat
+        return int(stat)
 
     def get_ability_scores(self):
         return self.stats

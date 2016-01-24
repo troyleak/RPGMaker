@@ -22,90 +22,109 @@ class Char_Class():
             'base_attack_bonus': '',
             'fortitude': '', 'reflex': '', 'will': ''}
 
-    def make(self, char_class):
+    def make(self, master, char_class):
         if char_class in self.choices:
             if char_class == 'barbarian':
+                master.char_class = Barbarian()
                 print("barbarian")
 
             if char_class == 'bard':
+                master.char_class = Bard()
                 print("bard")
 
             if char_class == 'cleric':
+                master.char_class = Cleric()
                 print("cleric")
 
             if char_class == 'druid':
+                master.char_class = Druid()
                 print("druid")
 
             if char_class == 'fighter':
+                master.char_class = Fighter()
                 print("fighter")
 
             if char_class == 'monk':
+                master.char_class = Monk()
                 print("monk")
 
             if char_class == 'paladin':
+                master.char_class = Paladin()
                 print("paladin")
 
             if char_class == 'ranger':
+                master.char_class = Ranger()
                 print("ranger")
 
             if char_class == 'rogue':
+                master.char_class = Rogue()
                 print("rogue")
 
             if char_class == 'sorcerer':
+                master.char_class = Sorcerer()
                 print("sorcerer")
 
             if char_class == 'wizard':
+                master.char_class = Wizard()
                 print("wizard")
 
-    def get_bab_mod(mod):
-        # Modulates based on number of levels between upgrades
-        def calc_bab(level):
-            # Takes a level, returns a list of Base Attack Bonuses for it
-            value = [level]
+    def calc_bab(self, level):
+        # Takes a level, returns a list of Base Attack Bonuses for it
+        value = []
 
-            while (level > 0):
-                value.append(level)
-                level -= mod  # Breaks loop before appending if level < 5
-            return level
-        return calc_bab
+        while (level > 0):
+            value.append(level)
+            level -= 5  # Breaks loop before appending if level < 5
+        value.sort()
+        return value
 
-    def get_save_mod(my_mod, my_bonus):
+    def calc_save(save, level, my_mod, my_bonus):
         # my_mod must be a three-tuple of floats in fort ref will order
         # my bonus must be a three-tuple in the same order, representing the
         # bonus of the class. EG: Barbarian has a +2 in fort
         # my_mod would be (2.0, 3.0, 4.0)
         # my_bonus would be (2, 0, 0)
+        valid_saves = ['fort', 'ref', 'will']
+        if save not in valid_saves:
+            print("ERROR: not a valid saving throw value")
+            return 0
+        else:
+            result = {}
+            for i in range(1, 4):
+                tmp = {
+                    valid_saves[i]: int((1 / my_mod[i]) + my_bonus[i])}
+                result.append(tmp)
+            return result
 
-        valid_saves = list('fort', 'ref', 'will')
-
-        def calc_save(save, level):
-            if save not in valid_saves:
-                print("Error, not a save value")
-                return 0
-            else:
-                result = {}
-                for i in range(1, 4):
-                    my_dict = dict(valid_saves[i], int((level / my_mod[i]) + my_bonus[i]))
-                    result.append(my_dict)
-                return result
-        return calc_save  # now you can get some closure
-
-    def get_spells_mod(my_mod):
+    def get_spells_mod(self, my_mod):
         def calc_mod(my_mod):
             print("not implemented yet")  # TODO: implement this
         return calc_mod
 
 
 class Barbarian(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
 
         self.class_skill_list = [
             "Acrobatics", "Climb", "Craft",
             "Handle Animal", "Intimidate", "Knowledge: Nature",
             "Perception", "Ride", "Survival", "Swim"]
 
-        self.hit_die = [2, 10]
-        self.save_mods = Char_Class.get_save_mod((2.0, 3.0, 4.0), (2, 0, 0))
+        self.hit_die = {
+            'number': 2,
+            'sides': 10
+            }
+        self.save_mods = {
+            'fort': 2.0,
+            'ref': 3.0,
+            'will': 4.0
+            }
+        self.save_bonus = {
+            'fort': 2,
+            'ref': 0,
+            'will': 0
+            }
+        self.save_throws_final = Char_Class.calc_save(self.save_mods, self.save_bonus)
 
     # Fast movement, rage
     # Rage power, uncanny dodge
@@ -141,7 +160,7 @@ class Barbarian(Char_Class):
 
 
 class Bard(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Acrobatics", "Appraise", "Bluff", "Climb", "Diplomacy",
             "Disguise", "Escape Artist", "Intimidate", "Knowledge: Arcana",
@@ -158,7 +177,7 @@ class Bard(Char_Class):
 
 
 class Cleric(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Appraise", "Craft", "Diplomacy", "Heal", "Knowledge: Arcana",
             "Knowledge: History", "Knowledge: Nobility", "Knowledge: Planes",
@@ -171,7 +190,7 @@ class Cleric(Char_Class):
 
 
 class Druid(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Climb", "Craft", "Fly", "Handle Animal", "Heal",
             "Knowledge: Geography", "Knowledge: Nature",
@@ -184,7 +203,7 @@ class Druid(Char_Class):
 
 
 class Fighter(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Climb", "Craft", "Handle Animal", "Intimidate",
             "Knowledge: Dungeoneering", "Knowledge: Engineering", "Profession",
@@ -196,7 +215,7 @@ class Fighter(Char_Class):
 
 
 class Monk(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Acrobatics", "Climb", "Craft", "Escape Artist", "Intimidate",
             "Knowledge: History", "Knowledge: Religion", "Perception",
@@ -209,7 +228,7 @@ class Monk(Char_Class):
 
 
 class Paladin(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Craft", "Diplomacy", "Handle Animal", "Heal",
             "Knowledge: Nobility", "Knowledge: Religion",
@@ -221,7 +240,7 @@ class Paladin(Char_Class):
 
 
 class Ranger(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Climb", "Craft", "Handle Animal", "Heal", "Heal", "Intimidate",
             "Knowledge: Dungeoneering", "Knowledge: Geography",
@@ -234,7 +253,7 @@ class Ranger(Char_Class):
 
 
 class Rogue(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Acrobatics", "Appraise", "Bluff", "Climb", "Craft", "Diplomacy",
             "Disable Device", "Disguise", "Escape Artist", "Intimidate",
@@ -249,7 +268,7 @@ class Rogue(Char_Class):
 
 
 class Sorcerer(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Appraise", "Bluff", "Craft", "Fly", "Intimidate",
             "Knowledge: Arcana", "Profession", "Spellcraft",
@@ -261,7 +280,7 @@ class Sorcerer(Char_Class):
 
 
 class Wizard(Char_Class):
-    def __init__(self, master):
+    def __init__(self):
         self.class_skill_list = [
             "Appraise", "Craft", "Fly", "Knowledge: Arcana",
             "Knowledge: Dungeoneering", "Knowledge: Engineering",

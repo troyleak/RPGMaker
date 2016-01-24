@@ -48,10 +48,12 @@ if args.mode in ['c', 'C', 'create']:
     char.abilities.set_ability_scores(ability_scores)
 
     # assign race
-    char.race.make(args.race)
+    char.race.make(char, args.race)
 
     # assign class
     char.char_class.make(args.char_class)
+
+    print(char.to_json())
 
 elif args.mode in ['r', 'R', 'read']:
     print(char.to_json())  # not pretty but works for now

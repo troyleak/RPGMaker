@@ -28,6 +28,7 @@ def update_stats(self, master, stats):
     for i, j in stats:
         master.i.stat += j
         master.i.mod += (int(j/2.0))  # For every two points, add a modifier
+    print(master.race.race)
 
 # Caps:             # lowercase:
 #                   #
@@ -52,29 +53,36 @@ class Race():
         self.stats_list = {"": 0}
         self.example_names = {'male': [], 'female': []}
 
-    def make(self, race):
+    def make(self, parent, race):
         if race in self.options:
             print("Valid race. Modifying character for racial characteristics")
             if race == 'dwarf':
+                parent.race = Dwarf()
                 print("dwarf")
             if race == 'halfling':
+                parent.race = Halfling()
                 print("halfling")
             if race == 'elf':
+                parent.race = Elf()
                 print("elf")
             if race == 'human':
+                parent.race = Human()
                 print("human")
             if race == 'gnome':
+                parent.race = Gnome()
                 print("gnome")
             if race == 'half-orc':
+                parent.race = HalfOrc()
                 print("half-orc")
             if race == 'half-elf':
+                parent.race = HalfElf()
                 print("half-elf")
         else:
             print("that race is not an option")
 
 
 class Dwarf(Race):
-    def __init__(self, master):
+    def __init__(self):
         # TODO: Traits description (Possibly defined in feats)
         self.traits = {
             "Slow and Steady": "",
@@ -124,7 +132,7 @@ class Dwarf(Race):
 
 
 class Elf(Race):
-    def __init__(self, master):
+    def __init__(self):
         self.traits = {
             # TODO: Finish example text for racial feats
             "Normal Speed": "Example text goes here",
@@ -173,7 +181,7 @@ class Elf(Race):
 
 
 class Gnome(Race):
-    def __init__(self, master):
+    def __init__(self):
         self.traits = {
             "Slow Speed": "",
             "Low-Light Vision": "",
@@ -221,8 +229,8 @@ class Gnome(Race):
         master.attributes.alignment = alignment.options.alignment[7]
 
 
-class Half_elf(Race):
-    def __init__(self, master):
+class HalfElf(Race):
+    def __init__(self):
         self.traits = {
             "Normal Speed": "",
             "Low-Light Vision": "",
@@ -264,10 +272,6 @@ class Half_elf(Race):
                 "Reda",
                 "Tamarie"]}
 
-    def choose_stat():
-
-        return
-
     def make_half_elf(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
@@ -275,8 +279,8 @@ class Half_elf(Race):
         master.attributes.alignment = alignment.options.alignment[2]
 
 
-class Half_orc(Race):
-    def __init__(self, master):
+class HalfOrc(Race):
+    def __init__(self):
         self.traits = {
             "Normal Speed": "",
             "Low-Light Vision": "",
@@ -324,7 +328,7 @@ class Half_orc(Race):
 
 
 class Halfling(Race):
-    def __init__(self, master):
+    def __init__(self):
         self.traits = {
             "Slow Speed": "",
             "Fearless": "",
@@ -372,7 +376,7 @@ class Halfling(Race):
 
 
 class Human(Race):
-    def __init__(self, master):
+    def __init__(self):
         self.traits = {
             "Normal Speed": "",
             "Bonus Feat": "",

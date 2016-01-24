@@ -61,6 +61,8 @@ class Character():  # TODO: Add feats
         # TODO: Finish this - Need to screen stats
 
     def assign_stats_from_submitted_list(self, form_list):
+        # TODO: Parse the list before going into all this
+        # TODO: Redesign frontpage to allow multiple items, modify this fn
         for entry in form_list:
 
             for i in self.valid_form_field_values:
