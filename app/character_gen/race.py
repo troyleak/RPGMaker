@@ -8,6 +8,7 @@ update_stats modifies the parent character with the appropriate stats
 
 '''
 
+
 # stats argument is a dict containing the ability name and the amount to
 # add to the existing stat. Negative numbers will subtract
 # like so:
@@ -40,15 +41,36 @@ def update_stats(self, master, stats):
 
 
 class Race():
+    # generic base class for racial attributes
     def __init__(self):
         self.options = [
             'dwarf', 'halfling', 'elf', 'human',
             'gnome', 'half-orc', 'half-elf']
         self.race = 'none'
-        self.traits = {'': ''}
+        self.traits = {}
         self.languages = []
         self.stats_list = {"": 0}
         self.example_names = {'male': [], 'female': []}
+
+    def make(self, race):
+        if race in self.options:
+            print("Valid race. Modifying character for racial characteristics")
+            if race == 'dwarf':
+                print("dwarf")
+            if race == 'halfling':
+                print("halfling")
+            if race == 'elf':
+                print("elf")
+            if race == 'human':
+                print("human")
+            if race == 'gnome':
+                print("gnome")
+            if race == 'half-orc':
+                print("half-orc")
+            if race == 'half-elf':
+                print("half-elf")
+        else:
+            print("that race is not an option")
 
 
 class Dwarf(Race):
@@ -104,12 +126,13 @@ class Dwarf(Race):
 class Elf(Race):
     def __init__(self, master):
         self.traits = {
-            "Normal Speed": "",
-            "Low-Light Vision": "",
-            "Elven Immunities": "",
-            "Elven Magic": "",
-            "Keen Senses": "",
-            "Weapon Familiarity": ""}
+            # TODO: Finish example text for racial feats
+            "Normal Speed": "Example text goes here",
+            "Low-Light Vision": "Example text goes here",
+            "Elven Immunities": "Example text goes here",
+            "Elven Magic": "Example text goes here",
+            "Keen Senses": "Example text goes here",
+            "Weapon Familiarity": "Example text goes here"}
 
         self.languages = ["Common", "Elvish"]
 

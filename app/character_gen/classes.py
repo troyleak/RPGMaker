@@ -10,11 +10,52 @@ For now skills and stats will be modified. Feats may come later
 
 class Char_Class():
     def __init__(self):
+        self.choices = [
+            'barbarian', 'bard', 'cleric', 'druid',
+            'fighter', 'monk', 'paladin', 'ranger',
+            'rogue', 'sorcerer', 'wizard'
+        ]
         self.class_skill_list = []
         self.hit_die = []
         self.skill_ranks_per_lvl = []
-        self.level_stats = {'base_attack_bonus': '',
-                            'fortitude': '', 'reflex': '', 'will': ''}
+        self.level_stats = {
+            'base_attack_bonus': '',
+            'fortitude': '', 'reflex': '', 'will': ''}
+
+    def make(self, char_class):
+        if char_class in self.choices:
+            if char_class == 'barbarian':
+                print("barbarian")
+
+            if char_class == 'bard':
+                print("bard")
+
+            if char_class == 'cleric':
+                print("cleric")
+
+            if char_class == 'druid':
+                print("druid")
+
+            if char_class == 'fighter':
+                print("fighter")
+
+            if char_class == 'monk':
+                print("monk")
+
+            if char_class == 'paladin':
+                print("paladin")
+
+            if char_class == 'ranger':
+                print("ranger")
+
+            if char_class == 'rogue':
+                print("rogue")
+
+            if char_class == 'sorcerer':
+                print("sorcerer")
+
+            if char_class == 'wizard':
+                print("wizard")
 
     def get_bab_mod(mod):
         # Modulates based on number of levels between upgrades
@@ -43,7 +84,7 @@ class Char_Class():
                 return 0
             else:
                 result = {}
-                for i in xrange(1, 4):
+                for i in range(1, 4):
                     my_dict = dict(valid_saves[i], int((level / my_mod[i]) + my_bonus[i]))
                     result.append(my_dict)
                 return result
@@ -51,7 +92,7 @@ class Char_Class():
 
     def get_spells_mod(my_mod):
         def calc_mod(my_mod):
-            return
+            print("not implemented yet")  # TODO: implement this
         return calc_mod
 
 

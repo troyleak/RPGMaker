@@ -30,6 +30,11 @@ class Abilities():
             except:
                 print("Error assigning stat " + str(i))
 
+            try:
+                self.mods[i] = self.set_ability_mod(self.stats[i])
+            except:
+                print("Error assigning mod " + str(i))
+
     def set_ability_stat_rand(self, stat):
         # Sets the specified stat to a random value
         # using the roll 4 drop 1 method
@@ -42,9 +47,10 @@ class Abilities():
     def set_ability_mod(self, stat):
         # returns the ability modifier for a given stat
         if stat >= 10:
-            modifier = (stat - 10) / 2
+            stat = (stat - 10) / 2
         elif stat < 10:
-            modifier = (11 - stat) / 2 * -1
+            stat = (11 - stat) / 2 * -1
+        return stat
 
     def get_ability_scores(self):
         return self.stats
