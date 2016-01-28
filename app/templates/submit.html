@@ -5,23 +5,19 @@
 {% block title %}Submitted{% endblock %}
 
 {% block page_content %}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h2><p class="text-center">Your Character</p></h2>
-    <ul class="list-group container-fluid">
-      {% for i in char.__dict__.keys() %}
-      <li class="list-group-item disabled text-capitalize"><h3>{{ i }}: </h3></li>
+<h2><p class="text-center">Your Character</p></h2>
+<ul class="list-group container-fluid">
+  {% for i in char.__dict__.keys() %}
+  <li class="list-group-item disabled text-capitalize"><h3>{{ i }}: </h3></li>
 
-        {% for j in char.i %}
-          <li class="list-group-item">{{ j }}<span class="badge">{{ j }}</span></li>
-        {% endfor %}
+    {% for j in char.i %}
+      <li class="list-group-item">{{ j }}<span class="badge">{{ j }}</span></li>
+    {% endfor %}
 
-      {% endfor %}
-    </ul>
-    <div class="panel-bottom">
-      <a class="btn btn-primary" href="/form">Start Over</a>
-    </div>
-  </div>
+  {% endfor %}
+</ul>
+<div class="panel-bottom">
+  <a class="btn btn-primary" href="/form">Start Over</a>
 </div>
 
 {% endblock %}

@@ -14,13 +14,21 @@
 
 {% block content %}
 <div class="container">
-    {% for message in get_flashed_messages() %}
-    <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+  </div>
+  {% endfor %}
+  <div class="panel panel-primary col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+    <div class="panel-body">
+      {% block page_content %}
+      {% endblock page_content %}
     </div>
-    {% endfor %}
-
-    {% block page_content %}{% endblock %}
+    <div class="panel panel-footer">
+      {% block page_footer %}
+      {% endblock page_footer %}
+    </div>
+  </div>
 </div>
 {% endblock content %}

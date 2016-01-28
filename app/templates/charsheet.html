@@ -4,17 +4,17 @@
 {% block title %}Create a Character{% endblock %}
 
 {% block page_content %}
-<div class="panel panel-default">
-  <div class="panel-body">
-      <div class="form-group">
-        <form action="" method="POST" enctype="multipart/form-data" role="form">
-          {{ form.csrf_token }}
-          {% for field in form if field.widget.input_type != 'hidden' %}
-            {{ field.csrf_token }}
-            {{ wtf.form_field(field, form_type="horizontal", button_map={'submit':'primary'}) }}
-          {% endfor %}
-        </form>
-      </div>
-  </div>
+<div class="row form-group">
+  <form action="" method="POST" enctype="multipart/form-data" role="form">
+    <ul class="list-group">
+      {{ form.csrf_token }}
+      {% for field in form if field.widget.input_type != 'hidden' %}
+      <li class="list-group-item">
+        {{ field.csrf_token }}
+        {{ wtf.form_field(field, form_type="", button_map={'submit':'primary'}) }}
+      </li>
+      {% endfor %}
+    </ul>
+  </form>
 </div>
 {% endblock page_content %}
