@@ -19,8 +19,6 @@ update_stats modifies the parent character with the appropriate stats
 #                 "wisdom":0,
 #                 "charisma":0 }
 
-# TODO: Fix this vvv
-
 
 def update_stats(self, master, stats):
     # str, dex, con, int, wis, cha
@@ -58,27 +56,28 @@ class Race():
             print("Valid race. Modifying character for racial characteristics")
             if race == 'dwarf':
                 parent.race = Dwarf()
-                print("dwarf")
+                # print("dwarf")
             if race == 'halfling':
                 parent.race = Halfling()
-                print("halfling")
+                # print("halfling")
             if race == 'elf':
                 parent.race = Elf()
-                print("elf")
+                # print("elf")
             if race == 'human':
                 parent.race = Human()
-                print("human")
+                # print("human")
             if race == 'gnome':
                 parent.race = Gnome()
-                print("gnome")
+                # print("gnome")
             if race == 'half-orc':
                 parent.race = HalfOrc()
-                print("half-orc")
+                # print("half-orc")
             if race == 'half-elf':
                 parent.race = HalfElf()
-                print("half-elf")
+                # print("half-elf")
         else:
             print("that race is not an option")
+        parent.race.make(parent)
 
 
 class Dwarf(Race):
@@ -121,7 +120,7 @@ class Dwarf(Race):
                 "Rusilka",
                 "Yangrit"]}
 
-    def make_dwarf(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
         master.languages = self.languages
@@ -154,26 +153,16 @@ class Elf(Race):
 
         self.example_names = {
             'male': [
-                "Caladrel",
-                "Heldadel",
-                "Lanliss",
-                "Meirdrarel",
-                "Seldlon",
-                "Talathel",
-                "Variel",
-                "Zordlon"],
+                "Caladrel", "Heldadel", "Lanliss", "Meirdrarel",
+                "Seldlon", "Talathel", "Variel", "Zordlon"],
             'female': [
-                "Amrunelara",
-                "Dardlara",
-                "Faunra",
-                "Jathal",
-                "Merisiel",
-                "Oparal",
-                "Soumral",
-                "Tessara",
-                "Yalandlara"]}
+                "Amrunelara", "Dardlara", "Faunra", "Jathal",
+                "Merisiel", "Oparal", "Soumral", "Tessara",
+                "Yalandlara"
+                ]
+            }
 
-    def make_elf(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
         master.languages = self.languages
@@ -205,24 +194,15 @@ class Gnome(Race):
 
         self.example_names = {
             'male': [
-                "Abroshtor",
-                "Bastargre",
-                "Halungalom",
-                "Krolmnite",
-                "Poshment",
-                "Zarzuket",
-                "Zatqualmie"],
+                "Abroshtor", "Bastargre", "Halungalom", "Krolmnite",
+                "Poshment", "Zarzuket", "Zatqualmie"],
             'female': [
-                "Besh",
-                "Fijit",
-                "Lini",
-                "Neji",
-                "Majet",
-                "Pai",
-                "Queck",
-                "Trig"]}
+                "Besh", "Fijit", "Lini", "Neji",
+                "Majet", "Pai", "Queck", "Trig"
+                ]
+            }
 
-    def make_gnome(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Small'
         master.languages = self.languages
@@ -254,25 +234,17 @@ class HalfElf(Race):
 # Cathran, Elsbeth, Iandoli, Kieyanna, Lialda, Maddela, Reda, Tamarie
         self.example_names = {
             'male': [
-                "Calathes",
-                "Encinal",
-                "Kyras",
-                "Narciso",
-                "Quiray",
-                "Satinder",
-                "Seltyiel",
-                "Zirul"],
+                "Calathes", "Encinal", "Kyras",
+                "Narciso", "Quiray", "Satinder",
+                "Seltyiel", "Zirul"],
             'female': [
-                "Cathran",
-                "Elsbeth",
-                "Iandoli",
-                "Kieyanna",
-                "Lialda",
-                "Maddela",
-                "Reda",
-                "Tamarie"]}
+                "Cathran", "Elsbeth", "Iandoli",
+                "Kieyanna", "Lialda", "Maddela",
+                "Reda", "Tamarie"
+                ]
+            }
 
-    def make_half_elf(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
         master.languages = self.languages
@@ -301,26 +273,17 @@ class HalfOrc(Race):
 
         self.example_names = {
             'male': [
-                "Caladrel",
-                "Heldadel",
-                "Lanliss",
-                "Meirdrarel",
-                "Seldlon",
-                "Talathel",
-                "Variel",
-                "Zordlon"],
+                "Caladrel", "Heldadel", "Lanliss",
+                "Meirdrarel", "Seldlon", "Talathel",
+                "Variel", "Zordlon"],
             'female': [
-                "Amrunelara",
-                "Dardlara",
-                "Faunra",
-                "Jathal",
-                "Merisiel",
-                "Oparal",
-                "Soumral",
-                "Tessara",
-                "Yalandlara"]}
+                "Amrunelara", "Dardlara", "Faunra",
+                "Jathal", "Merisiel", "Oparal",
+                "Soumral", "Tessara", "Yalandlara"
+                ]
+            }
 
-    def make_half_orc(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
         master.languages = self.languages
@@ -349,26 +312,18 @@ class Halfling(Race):
 
         self.example_names = {
             'male': [
-                "Antal",
-                "Boram",
-                "Evan",
-                "Jamir",
-                "Kaleb",
-                "Lem",
-                "Miro",
-                "Sumak"],
+                "Antal", "Boram", "Evan",
+                "Jamir", "Kaleb", "Lem",
+                "Miro", "Sumak"
+                ],
             'female': [
-                "Anafa",
-                "Bellis",
-                "Etune",
-                "Filiu",
-                "Lissa",
-                "Marra",
-                "Rillka",
-                "Sistra",
-                "Yamyra"]}
+                "Anafa", "Bellis", "Etune",
+                "Filiu", "Lissa", "Marra",
+                "Rillka", "Sistra", "Yamyra"
+                ]
+            }
 
-    def make_halfling(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Small'
         master.languages = self.languages
@@ -383,6 +338,7 @@ class Human(Race):
             "Skilled": ""}
 
         self.languages = ["Common"]
+
 # TODO: Implement choosing +2 at character creation
         self.stats_list = {
             "strength": 0,
@@ -394,26 +350,18 @@ class Human(Race):
 
         self.example_names = {
             'male': [
-                "Caladrel",
-                "Heldadel",
-                "Lanliss",
-                "Meirdrarel",
-                "Seldlon",
-                "Talathel",
-                "Variel",
-                "Zordlon"],
+                "Caladrel", "Heldadel", "Lanliss",
+                "Meirdrarel", "Seldlon", "Talathel",
+                "Variel", "Zordlon"
+                ],
             'female': [
-                "Amrunelara",
-                "Dardlara",
-                "Faunra",
-                "Jathal",
-                "Merisiel",
-                "Oparal",
-                "Soumral",
-                "Tessara",
-                "Yalandlara"]}
+                "Amrunelara", "Dardlara", "Faunra",
+                "Jathal", "Merisiel", "Oparal",
+                "Soumral", "Tessara", "Yalandlara"
+                ]
+            }
 
-    def make_human(self, master):
+    def make(self, master):
         self.update_stats(master, self.stats_list)
         master.size = 'Medium'
         master.languages = self.languages
