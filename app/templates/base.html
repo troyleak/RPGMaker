@@ -20,14 +20,19 @@
       {{ message }}
   </div>
   {% endfor %}
-  <div class="panel panel-primary col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+  <div class="panel panel-primary col-xs-12 col-sm-10 col-sm-offset-1">
     <div class="panel-body">
       {% block page_content %}
       {% endblock page_content %}
     </div>
     <div class="panel panel-footer">
-      {% block page_footer %}
-      {% endblock page_footer %}
+      <div class="row">
+        {% block page_footer %}
+        {% endblock page_footer %}
+      </div>
+      <div class="row">
+        <h6 class="text-center">Copyright <i class="fa fa-copyright"></i> 2016 Troy Leak<p><small>All Rights Reserved</small></h6>
+      </div>
     </div>
   </div>
 </div>
