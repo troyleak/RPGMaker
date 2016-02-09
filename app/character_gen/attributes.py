@@ -73,15 +73,6 @@ class Attributes():
             self.attrib = value
         except ValueError:
             print("Error modifying that attribute. Perhaps it doesn't exist?")
-    # checks its own member variables and if that exists, the list of
-    # options for that attribute before modifying the value
-    #
-        #            or use: vars(self)
-        # if attrib in self.__dict__ and value in self.options[attrib]:
-        #     self.__dict__[attrib] = value
-        # else:
-        #     print("Error modifying that attribute")
-        # print("test")
 
     def set_attribs_rand(self):
         # sets attributes randomly

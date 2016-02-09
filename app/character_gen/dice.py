@@ -7,17 +7,10 @@ class Dice():
         pass
 
     def roll_dice(sides, dice):
-        # returns a list of the outcome of the specified number of die rolls
+        # generator expression for the given number of dice rolls
         random.seed(random.seed(random.random))
-        result = []
-
         for i in range(dice):
-            roll = random.randint(1, sides)
-            # print("Roll: " + str(roll))
-            result.append(roll)
-            # print("Result: " + str(result))
-
-        return result
+            yield random.randint(1, sides)
 
     def drop_lowest(values):
         if len(values) <= 1:

@@ -38,11 +38,7 @@ class Abilities():
     def set_ability_stat_rand(self, stat):
         # Sets the specified stat to a random value
         # using the roll 4 drop 1 method
-        lst = dice.Dice.roll_dice(6, 4)
-        # print(str(lst))
-        result = sum(dice.Dice.drop_lowest(lst))
-        # print(str(result))
-        self.stats[stat] = result
+        self.stats[stat] = sum(i for i in dice.Dice.roll_dice(6, 4))
 
     def set_ability_mod(self, stat):
         # returns the ability modifier for a given stat
